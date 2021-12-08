@@ -38,11 +38,6 @@ canvas1.create_window(250, 185, window=password)
 password = Entry(root, text='password placeholder')
 canvas1.create_window(360, 185, window=password)
 
-#Button
-login = Button (root, text='Login',font=("Arial", 14),command=None)
-canvas1.create_window(300, 240, window=login)
-
-
 root.mainloop()
 
 #WIP Finish Backend
