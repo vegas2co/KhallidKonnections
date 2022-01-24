@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>AHS_Automation</RootNamespace>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aquality.WinAppDriver" Version="2.0.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+        <PackageReference Include="NUnit" Version="3.13.1" />
+        <PackageReference Include="NUnit.Allure" Version="1.0.14" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+        <PackageReference Include="coverlet.collector" Version="3.0.2" />
+        <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+		<Folder Include="allure" />
+		<Folder Include="src\views\filter\lookup\SubscribersAndMembers\" />
+		<Folder Include="src\views\filter\lookup\Producers\" />
+		<Folder Include="src\views\filter\lookup\Providers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+	    <Categories Include="allure\categories.json" />
+    </ItemGroup>
+	
+    <Target Name="CopyCategoriesToAllureFolder">
+        <Copy SourceFiles="@(Categories)" DestinationFolder="$(OutputPath)allure" />
+    </Target>
+	
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <CallTarget Targets="CopyCategoriesToAllureFolder" />
+        <Exec Command="py build-allure.py" />
+    </Target>
+</Project>
