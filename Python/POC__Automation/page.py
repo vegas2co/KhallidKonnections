@@ -6,10 +6,13 @@ class SearchTextElement(BasePageElement):
     """This class gets the search text from the specified locator"""
 
     #The locator for search box where search string is entered
-    try:
-        locator = 'q'
-    except:
-        locator = 'btnK'
+    locator = 'q'
+
+class SearchTextElementYT(BasePageElement):
+    """This class gets the search text from the specified locator"""
+
+    #The locator for search box where search string is entered
+    locator = 'search_query'
 
 
 class BasePage(object):
@@ -29,16 +32,12 @@ class MainPage(BasePage):
 
     #Declares a variable that will contain the retrieved text
     search_text_element = SearchTextElement()
+    search_text_element_YT = SearchTextElementYT()
 
-    def is_title_matches(self):
+    def is_title_matches(self, website):
         """Verifies that the hardcoded text "Python" appears in page title"""
 
-        return "Python" in self.driver.title
-
-    def is_google_title_matches(self):
-        """Verifies that the hardcoded text "Google" appears in page title"""
-
-        return "Google" in self.driver.title
+        return website in self.driver.title
 
     def click_go_button(self):
         """Triggers the search"""
@@ -57,9 +56,13 @@ class MainPage(BasePage):
 
         element = self.driver.find_element(*MainPageLocators.KhallidKonnectionsLink)
         element.click()
+
+    def click_youtube_search_button(self):
+        """Triggers the search"""
+
+        element = self.driver.find_element(*MainPageLocators.YouTube_Search_Button)
+        element.click()
         
-
-
 class SearchResultsPage(BasePage):
     """Search results page action methods come here"""
 
