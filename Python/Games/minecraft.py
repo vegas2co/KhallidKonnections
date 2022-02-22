@@ -15,15 +15,6 @@ Sky(texture='sky_sunset')
 # Define a Voxel class.
 # By setting the parent to scene and the model to 'cube' it becomes a 3d button.
 
-sword = Entity(
-    model='blade',
-    texture='assests\sword',
-    rotation = (30,-40),
-    position=(0.5,-0.6),
-    parent=scene,
-    scale=(0.2,0.15)
-)
-
 class Voxel(Button):
     def __init__(self, position=(0,0,0)):
         super().__init__(
@@ -46,25 +37,33 @@ class Voxel(Button):
                 destroy(self)
 
             if key == 'z':
-                self.highlight_color = color.red
+                self.color = color.red
+            
+            if key == 'x':
+                sword.position = (0.4,-0.5)
+            elif key == 'c':
+                sword.position = (0.4,-0.5)
+            else:
+                sword.position = (0.5,-0.6)
+                
 
         if key == 'm':
-            self.position = (0,0,0)
+            app.run()
             print('Reset Position')
-
-
-    def updateSword(self, key):
-        if key == 'x':
-            sword.position = (0.4,-0.5)
-        elif key == 'c':
-            sword.position = (0.4,-0.5)
-        else:
-            sword.position = (0.5,-0.6)
 
 
 for z in range(40):
     for x in range(40):
         voxel = Voxel(position=(x,0,z))
+
+sword = Entity(
+    model='blade',
+    texture='assests\sword',
+    rotation = (30,-40),
+    position=(0.5,-0.6),
+    parent=camera.ui,
+    scale=(0.2,0.15)
+)
 
 
 player = FirstPersonController()
