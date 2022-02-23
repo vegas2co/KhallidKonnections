@@ -1,5 +1,6 @@
 from elements import BasePageElement
 from locators import MainPageLocators
+
 from time import sleep
 
 class SearchTextElement(BasePageElement):
@@ -25,7 +26,6 @@ class BasePage(object):
     def scroll(self, Y):
         self.driver.execute_script("window.scrollTo(0, "+str(Y)+")")
         sleep(2)
-
 
 class MainPage(BasePage):
     """Home page action methods come here. I.e. Python.org"""
@@ -62,6 +62,16 @@ class MainPage(BasePage):
 
         element = self.driver.find_element(*MainPageLocators.YouTube_Search_Button)
         element.click()
+
+    def click_khallid_konnections_page(self):
+        """Triggers the search"""
+
+        try:
+            element = self.driver.find_element(*MainPageLocators.Click_KK_Video)
+            element.click()
+        except:
+            element = self.driver.find_element(*MainPageLocators.Full_Screen_Video)
+            element.click()
         
 class SearchResultsPage(BasePage):
     """Search results page action methods come here"""
@@ -71,7 +81,3 @@ class SearchResultsPage(BasePage):
         # element, but as for now it works fine
         return "No results found." not in self.driver.page_source
 
-    def is_google_results_found(self):
-        # Probably should search for this text in the specific page
-        # element, but as for now it works fine
-        return "No results found." not in self.driver.page_source

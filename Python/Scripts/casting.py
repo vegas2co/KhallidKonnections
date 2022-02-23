@@ -5,4 +5,8 @@ def blah(input):
     print(input + '\n')
     casting(490)
     
-blah("Hi Mom")
+blah("hi mom")
+
+a = 'Movie a f'
+print(a.find(' '))
+
