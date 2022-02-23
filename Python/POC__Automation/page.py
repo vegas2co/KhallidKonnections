@@ -33,7 +33,7 @@ class MainPage(BasePage):
     #Declares a variable that will contain the retrieved text
     search_text_element = SearchTextElement()
     search_text_element_YT = SearchTextElementYT()
-
+    
     def is_title_matches(self, website):
         """Verifies that the hardcoded text "Python" appears in page title"""
 
@@ -43,12 +43,6 @@ class MainPage(BasePage):
         """Triggers the search"""
 
         element = self.driver.find_element(*MainPageLocators.GO_BUTTON)
-        element.click()
-
-    def click_search_button(self):
-        """Triggers the search"""
-
-        element = self.driver.find_element(*MainPageLocators.GOOGLE_SEARCH_BOX)
         element.click()
 
     def click_khallid_konnections_link(self):

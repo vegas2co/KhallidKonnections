@@ -1,9 +1,19 @@
+'''
+Webpage Object Modal Automation
+By: Khallid Williams
+Testing Google, Facebook, Youtube, Etc
+
+Notes:
+YOUTUBE does not like Keys.ENTER
+'''
+
 import unittest
 from selenium import webdriver
 import page
 from time import sleep
+from selenium.webdriver.common.keys import Keys
 
-KK = 'Khallid Konnections'
+G_KK = 'Khallid Konnections' + Keys.RETURN
 class PythonOrgSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
@@ -43,9 +53,8 @@ class GoogleSearch(unittest.TestCase):
     def test_search_in_google(self):
         main_page = page.MainPage(self.driver)
         self.assertTrue(main_page.is_title_matches('Google'), "google.com title doesn't match.")
-        main_page.search_text_element = KK
+        main_page.search_text_element = G_KK
         sleep(3)
-        main_page.click_search_button()
         main_page.click_khallid_konnections_link()
         sleep(3)
         search_results_page = page.SearchResultsPage(self.driver)
@@ -81,9 +90,10 @@ class YoutubeSearch(unittest.TestCase):
         main_page.click_khallid_konnections_page()
         sleep(2)
         main_page.click_khallid_konnections_page()
+        sleep(20)
 
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main() #Add class to test one by one
