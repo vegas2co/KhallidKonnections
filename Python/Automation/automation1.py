@@ -1,20 +1,28 @@
-import unittest
-from Actions.Automation1_Actions import *
-from Elements.Automation1_Elements import *
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from time import sleep
 
-#Test Case 1 - Navigate to Google and Search Khallid Konnections
-EXPAND_WINDOW
+PATH = '/Users/khallidwilliams/Desktop/Khallid Konnections/chromedriver'
+driver = webdriver.Chrome(PATH)
 
-#Yahoo Login
+def google():
+    EXPAND_WINDOW = driver.maximize_window()
+    driver.get("http://www.google.com")
+
+#Google Search Bar
+'''
 navigate_to_webpage("https://google.com")
 search_bar = driver.find_element(By.NAME, 'q')
 search_bar.click()
-search_bar.send_keys("Khallid Konnetions")
-sleep(3)
-search_bar(Keys.ENTER)
+search_bar.send_keys("Khallid Konnetions" + Keys.ENTER)
 
 if __name__ == "__main__":
     unittest.main()
+
+'''
+
+
 
 '''
 driver.find_element(By.CSS_SELECTOR, "#ybarMailLink > span.ybar-icon-sprite._yb_9450p._yb_1x2ss").click()

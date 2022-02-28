@@ -8,7 +8,7 @@ class MainPageLocators(object):
     SEARCH_BOX = (By.ID, 'id-search-field')
 
     #GOOGLE
-    KhallidKonnectionsLink = (By.CSS_SELECTOR, '#rso > div:nth-child(1) > div > div:nth-child(1) > div > div > div.NJo7tc.Z26q7c.jGGQ5e > div > a > h3')
+    KhallidKonnectionsLink = (By.CSS_SELECTOR, '#rso > div:nth-child(2) > div > div:nth-child(1) > div > div > div.NJo7tc.Z26q7c.jGGQ5e > div > a > h3')
     
     #YOUTUBE
     YouTube_Search_Button = (By.ID, 'search-icon-legacy')
