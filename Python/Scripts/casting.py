@@ -8,10 +8,10 @@ def blah(input):
 #blah("hi mom")
 
 def young():
-  print('Young ass nigga')
+  print('Young man')
 
 def grown():
-  print('Grown ass nigga')
+  print('Grown man')
 
 def age(input):
   age = input
