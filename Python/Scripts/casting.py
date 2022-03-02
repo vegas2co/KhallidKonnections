@@ -20,6 +20,7 @@ def age(input):
   else:
     grown()
 
+'''
 price = input("Price: ") #Get Price
 cash_off = input("cash off: ") #Get cash off coupon 5 or 10
 percentage = input("percentage: ") #Get percentage off
@@ -70,3 +71,44 @@ elif percentage == '20':
   cashout()
 else:
   print('Error')
+
+'''
+
+
+
+first_name=input('What is your first name?')
+last_name=input('What is your last name?')
+age=input('What is your age?')
+
+try:
+  SCORE1=int(input('Enter score 1:'))
+  print(str(SCORE1))
+  if SCORE1 < 0:
+    raise TypeError("Only integers greateer than 0 are allowed")
+  #print('Your SCORE is ' + SCORE1)
+except ValueError: #strings
+  print('This does not take strings')
+
+try:
+  SCORE2=int(input('Enter score 2:'))
+  print(str(SCORE2))
+  if SCORE2 < 0:
+    raise TypeError("Only integers greateer than 0 are allowed")
+  #print('Your Score is ' + SCORE2)
+except ValueError:
+  print('This does not take strings')
+
+try:
+  SCORE3=int(input('Enter score 3:'))
+  print(str(SCORE3))
+  if SCORE3 < 0:
+    raise TypeError("Only integers greateer than 0 are allowed")
+except ValueError:
+  print('This does not take strings')
+
+
+
+Averagescore=(int(SCORE1) + int(SCORE2) + int(SCORE3)) / 3
+updatedaveragescore='{:.2f}'.format(Averagescore)
+sentence=last_name + ', ' + first_name + ' age: ' + str(age) + ' average grade: ' + str(updatedaveragescore)
+print(sentence)
