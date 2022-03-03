@@ -81,28 +81,32 @@ last_name=input('What is your last name?')
 age=input('What is your age?')
 
 try:
-  SCORE1=int(input('Enter score 1:'))
-  print(str(SCORE1))
-  if SCORE1 < 0:
-    raise TypeError("Only integers greateer than 0 are allowed")
-  #print('Your SCORE is ' + SCORE1)
+  SCORE1=input('Enter score 1:')
+  if int(SCORE1) < 0:
+      SCORE1 = 0
+      print(SCORE1)
+  else:
+      print(SCORE1)
 except ValueError: #strings
   print('This does not take strings')
 
 try:
   SCORE2=int(input('Enter score 2:'))
-  print(str(SCORE2))
-  if SCORE2 < 0:
-    raise TypeError("Only integers greateer than 0 are allowed")
-  #print('Your Score is ' + SCORE2)
+  if int(SCORE2) < 0:
+    SCORE2 = 0
+    print(SCORE2)
+  else:
+    print(SCORE2)
 except ValueError:
   print('This does not take strings')
 
 try:
-  SCORE3=int(input('Enter score 3:'))
-  print(str(SCORE3))
-  if SCORE3 < 0:
-    raise TypeError("Only integers greateer than 0 are allowed")
+  SCORE3=input('Enter score 3:')
+  if int(SCORE1) < 0:
+    SCORE1 = 0
+    print(SCORE3)
+  else:
+    print(SCORE3)
 except ValueError:
   print('This does not take strings')
 
