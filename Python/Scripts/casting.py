@@ -8,17 +8,19 @@ def blah(input):
 #blah("hi mom")
 
 def young():
-  print('Young man')
+  return('Young man')
 
 def grown():
-  print('Grown man')
+  return('Grown man')
 
 def age(input):
   age = input
   if age < 18:
-    young()
+    print(young())
   else:
-    grown()
+    print(grown())
+
+age(17)
 
 '''
 price = input("Price: ") #Get Price
@@ -74,8 +76,7 @@ else:
 
 '''
 
-
-
+'''
 first_name=input('What is your first name?')
 last_name=input('What is your last name?')
 age=input('What is your age?')
@@ -116,3 +117,5 @@ Averagescore=(int(SCORE1) + int(SCORE2) + int(SCORE3)) / 3
 updatedaveragescore='{:.2f}'.format(Averagescore)
 sentence=last_name + ', ' + first_name + ' age: ' + str(age) + ' average grade: ' + str(updatedaveragescore)
 print(sentence)
+
+'''
