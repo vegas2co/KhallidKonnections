@@ -1,0 +1,117 @@
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Roster</title>
+    <style>
+      header,
+      footer {
+        font-family: Arial, Helvetica;
+        font-size: 11pt;
+        font-weight: bold;
+        background-color: lightblue;
+        text-align: center;
+        width: 100%;
+      }
+
+      table {
+        width: 100%
+      }
+
+      tr:nth-child(odd) {
+        background-color: lightgrey;
+      }
+    </style>
+    <script>
+      const users = [
+        {
+          FirstName: "Peter",
+          LastName: "Piper",
+          Age: 25,
+          Bio: "He picked a lot of pickled peppers"
+        },
+        {
+          FirstName: "Shrek",
+          LastName: "",
+          Age: 55,
+          Bio: "He lives in the land of Far Far away"
+        },
+        {
+          FirstName: "James Tiberius",
+          LastName: "Shatner",
+          Age: 35,
+          Bio: "KHAAAAAAAAAN!!!!!!"
+        },
+        {
+          FirstName: "Harry",
+          LastName: "Potter",
+          Age: 13,
+          Bio: "He went to Hogwarts to learn magic"
+        }
+      ]
+    </script>
+  </head>
+
+  <body>
+    <br><br>
+    <div>
+      <header>Users</header>
+      <div id="main">
+        <div id="titleRow">
+          <div>First Name</div>
+          <div>Last Name</div>
+          <div>Age</div>
+          <div>More Details</div>
+        </div>
+      </div>
+      <footer>Property of Fictitious Company LLC</footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="bioModal" tabindex="-1" aria-labelledby="bioModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bioModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="modalContent" class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $('#main').ready(function () {
+          var html = "<table><tr><th>First Name</th><th>Last Name</th><th>Age</th><th>More Details</th></tr>";
+          for (var i = 0; i < users.length; i++) {
+            html += "<tr id=" + i + ">";
+            html += "<td>" + users[i].FirstName + "</td>";
+            html += "<td>" + users[i].LastName + "</td>";
+            html += "<td>" + users[i].Age + "</td>";
+            html += "<td><button id=button" + i + "  type=\"button\" class=\"btn btn-info\">Additional Info</button></td>";
+            html += "</tr>";
+          }
+          html += "</table>";
+          $("#titleRow").html(html);
+        });
+
+        $("#titleRow").on('click', function () {
+          for (var i = 0; i < users.length; i++) {
+            while (i == $('#button' + i).index() + i) {
+              $("#bioModalLabel").text("Additonal Info");
+              $('#bioModal').modal('show')
+              $("#modalContent").text(users[i].Bio);
+              break;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
