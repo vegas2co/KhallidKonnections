@@ -6,13 +6,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<style>
 		#navigation {
 			position: relative;
 			top: -15%
 		}
+
 	</style>
+
+	<script>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    
+		$(document).ready(function(){
+      $("#football").click(function(){
+        var div = $("img");
+        div.animate({left: '+=500px', height: '30px', opacity: '0.4'}, "fast");
+      });
+		});
+	</script>
 </head>
 
 <body class="w3-content" style="max-width:1300px">
@@ -90,9 +103,26 @@
 		<div class="w3-half w3-indigo w3-container" style="min-height:800px" id="personal">
 			<div class="w3-padding-64 w3-center">
 				<h2>Personal Life</h2>
-				<p>A draft from my CV</p>
 				<div class="w3-container w3-responsive">
-					<table class="w3-table">
+					<div>
+						<h1>Sports</h1>
+						<p> Khallid played all sports such as basketball, soccer, football, baseball and even ran track. </p>
+            <div id="football">
+              <img src="/Users/khallidwilliams/Desktop/Khallid Konnections/HTML/football.png" alt="football" width="50" height="60">
+            </div>
+					</div>
+					<div>
+						<h1>School</h1>
+						•Khallid started off being home school until grade 5. Khallid then went to Mabel Hogard magnet school in the 5th grade to finsh elementary school.</br>
+						•Khallid wen to Jim Bridger Magnet School in the 6th Grade. Khallid Resumed 7th and 8th grade at West Middle School.<br>
+						•Khallid went to High school at Advanced Technologies Academy, he also played sports at Western Middle School.
+					</div>
+					<div>
+						<h1>Family&Friends</h1>
+						Khallid grew up having a big family, with both his mothers side and father side living in the same city.<br>
+						Khallid also had lots of friends from the neighrborhood, sports teams, the mosque, school, social media, etc.
+					</div>
+					<!-- <table class="w3-table">
 						<tr>
 							<th>Year</th>
 							<th>Title</th>
@@ -128,7 +158,7 @@
 							<td>Degree in Bachelor of Business</td>
 							<td>RMIT University, Melbourne, Australia</td>
 						</tr>
-					</table>
+					</table>-->
 				</div>
 			</div>
 		</div>
@@ -142,7 +172,7 @@
 			</div>
 			<div class="w3-padding-64">
 				<p>..for a cup of coffee, or whatever.</p>
-				<p>Chicago, US</p>
+				<p>Plano, US</p>
 				<p>+00 1515151515</p>
 				<p>test@test.com</p>
 			</div>
