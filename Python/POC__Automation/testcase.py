@@ -90,10 +90,10 @@ class YoutubeSearch(unittest.TestCase):
         main_page.click_khallid_konnections_page()
         sleep(2)
         main_page.click_khallid_konnections_page()
-        sleep(20)
+        sleep(1)
 
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main() #Add class to test one by one
+    unittest.main(YoutubeSearch()) #Add class to test one by one
