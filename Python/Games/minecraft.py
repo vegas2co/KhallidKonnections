@@ -47,10 +47,6 @@ class Voxel(Button):
                 sword.position = (0.5,-0.6)
                 
 
-        if key == 'm':
-            app.run()
-            print('Reset Position')
-
 
 for z in range(40):
     for x in range(40):

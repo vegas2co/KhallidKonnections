@@ -8,18 +8,21 @@ def blah(input):
 #blah("hi mom")
 
 def young():
-  print('Young man')
+  return('Young man')
 
 def grown():
-  print('Grown man')
+  return('Grown man')
 
 def age(input):
   age = input
   if age < 18:
-    young()
+    print(young())
   else:
-    grown()
+    print(grown())
 
+age(17)
+
+'''
 price = input("Price: ") #Get Price
 cash_off = input("cash off: ") #Get cash off coupon 5 or 10
 percentage = input("percentage: ") #Get percentage off
@@ -70,3 +73,49 @@ elif percentage == '20':
   cashout()
 else:
   print('Error')
+
+'''
+
+'''
+first_name=input('What is your first name?')
+last_name=input('What is your last name?')
+age=input('What is your age?')
+
+try:
+  SCORE1=input('Enter score 1:')
+  if int(SCORE1) < 0:
+      SCORE1 = 0
+      print(SCORE1)
+  else:
+      print(SCORE1)
+except ValueError: #strings
+  print('This does not take strings')
+
+try:
+  SCORE2=int(input('Enter score 2:'))
+  if int(SCORE2) < 0:
+    SCORE2 = 0
+    print(SCORE2)
+  else:
+    print(SCORE2)
+except ValueError:
+  print('This does not take strings')
+
+try:
+  SCORE3=input('Enter score 3:')
+  if int(SCORE1) < 0:
+    SCORE1 = 0
+    print(SCORE3)
+  else:
+    print(SCORE3)
+except ValueError:
+  print('This does not take strings')
+
+
+
+Averagescore=(int(SCORE1) + int(SCORE2) + int(SCORE3)) / 3
+updatedaveragescore='{:.2f}'.format(Averagescore)
+sentence=last_name + ', ' + first_name + ' age: ' + str(age) + ' average grade: ' + str(updatedaveragescore)
+print(sentence)
+
+'''
