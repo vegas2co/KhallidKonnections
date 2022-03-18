@@ -2,7 +2,6 @@
 By: Khallid Williams
 Program to get the average score by entering
 How many scores, and entering each score individually!
-
 '''
 import unittest
 

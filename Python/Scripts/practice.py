@@ -1,6 +1,11 @@
+
 import unittest
-'''
 import string
+
+'''
+Employee hourly pay calculator logic
+weekly_pay() run the full thing
+'''
 def hourly_employee_input():
 	username = input('What is your name? ')
 	if username not in string.punctuation:
@@ -25,20 +30,15 @@ def hourly_employee_input():
 
 	return username, str(hours), str(hourlyrate)
 
-
-
 def weekly_pay(username, hours, hourlyrate):
 	dollars = float(hours) * float(hourlyrate)
 	print('{} you worked {} hours this week.\nYour rate of pay is {} per hour.\nYour weekly pay is {}'.format(username,str(hours),str(hourlyrate), dollars))
 
-a,b,c = hourly_employee_input()
 
-weekly_pay(a,str(b),str(c))
 '''
-
 #Mar 15th 2022 7:00PM
-
-
+Check if a number is in a set
+'''
 def in_set(incoming_set,user_number):
   if user_number in incoming_set:
     boolValue = user_number in incoming_set
@@ -49,27 +49,11 @@ def in_set(incoming_set,user_number):
     print('The boolean value is {}'.format(boolValue))
     print('The value {} is not in the set {}'.format(user_number,incoming_set))
 
-def get_test_scores():
-  scores_dict = dict()
-  num_scores = input('Please enter number of test scores: ')
-  
-  i = 1
-  while i < int(num_scores):
-    score = input('Please enter test score:')
-    print(str(score))
-    scores_dict["Test Score"+str(i)] = int(score)
-    i+=1
 
-  return scores_dict
-
-def avg_scores(test_scores):
-  print(test_scores)
-  print('The number of scores equal {}'.format(len(test_scores)))
-  sum = 0
-  for i in test_scores.values():
-    sum = int(i) + sum
-  avg = sum/len(test_scores)
-  print('The average score is {}'.format(str(avg)))
+'''
+AI Practice, Ask questions and reply automaticlly
+end when pressing Y whena asked.
+'''
 
 def get_user_input():
   running = True
@@ -117,25 +101,13 @@ def get_user_input():
     else:
       print('Daddy said -> You just like ya daddy')
       break
+
 '''
-def solution(A):
-  # write your code in Python 3.6
-  list = []
-  size = len(A)
-  for i in range(0,size):
-    for j in range(i+1,size):
-      while True:
-        answer = A[j] - A[i]
-        list.append(answer)
-        print(list)
-        print('i = '+str(A[i]))
-        print('j = '+str(A[j]))
-        print(A)
-        print('Pair with a given difference {} is {} & {} \n'.format(answer,A[j],A[i]))
-        A.pop(0)
-        '''
-class Test(unittest.TestCase):
-  def solution(A):
+  Mar 16th 3:00pm
+  Test program when i had an interview at smoothstack!
+'''     
+class Interview(unittest.TestCase):
+  def test_solution(A):
     list = []
     size = len(A)
     i = 0
@@ -157,66 +129,92 @@ class Test(unittest.TestCase):
     print(list)
 
 
-def average_scores_five(self, dictionary):
-  try:
-    thisdict = dictionary
-    avg = 0
-    for value in thisdict.values():
-      print("{}".format(value))
-      avg += value
-    length = len(thisdict)
-    avg = avg / length
-    print('Average of 5 Scores = {}'.format(avg))
-  except ZeroDivisionError:
-    print(ZeroDivisionError)
+'''
+  Mar 17th 6:00pm
+  Helping -> Tutoring homework problem.
+  Working with average scores of 5 and 0.
+'''
 
-  expected = 97.0
-  actual = avg
-  self.assertAlmostEqual(expected,actual)
-  return 
+#By Khallid Williams
+#Unittest Scores class that has 3 functions
+#1. test average scores by parametesrs #test1 = Scores().test_average_score(4,3,2,1,first_name = 'Khallid', last_name='Williams\n')
+#2. test_average_scores_five with hard code dictionary
+#3. test_average_scores_zero with empty dictionary -> should return error
 
-def average_scores_zero(self, dictionary):
-  try:
-    thisdict = dictionary
-    avg = 0
-    for value in thisdict.values():
-      if value == 97:
-        break
-      print("{}".format(value))
-      avg += value
-        
-    length = len(thisdict)
-    avg = avg / length
-    print('Average of 0 Scores = {}'.format(avg))
-  except ZeroDivisionError:
-    print(ZeroDivisionError)
+class Scores(unittest.TestCase):
+  def test_average_score(self,*args, **kwargs):
+    print('Testing test_average_score')
+    for i in args:
+      print(i)
+    for key, value in kwargs.items():
+      print("%s == %s" % (key, value))
+    return
 
-  expected = 0
-  actual = avg
-  self.assertAlmostEqual(expected,actual)
-  return
+  def test_average_scores_five(self):
+    print('Testing test_average_scores_five')
+    try:
+      thisdict = {"test1": 99,"test2": 98,"test3": 97,"test4": 96,"test5": 95}
+      avg = 0
+      for value in thisdict.values():
+        print("{}".format(value))
+        avg += value
+      length = len(thisdict)
+      avg = avg / length
+      print('Average of 5 Scores = {}'.format(avg))
+    except ZeroDivisionError:
+      print(ZeroDivisionError)
 
-def switch_case(i):
-  switcher={
-    'Novice':50,
-    'Beginner':150,
-    'Expert':350,
-    'Advanced':500
-  }
-  print('{} starts with {} points'.format(i,switcher.get(i,"Invalid Player Level")))
-  
+    expected = 97.0
+    actual = avg
+    self.assertAlmostEqual(expected,actual)
+    self.assertTrue(expected,actual)
+    return 
+
+  def test_average_scores_zero(self):
+    print('Testing test_average_scores_zero')
+    try:
+      thisdict = {}
+      avg = 0
+      for value in thisdict.values():
+        print("{}".format(value))
+        avg += value
+          
+      length = len(thisdict)
+      avg = avg / length
+      print('Average of 0 Scores = {}'.format(avg))
+    except ZeroDivisionError:
+      print(ZeroDivisionError)
+
+    expected = 0
+    actual = avg
+    self.assertAlmostEqual(expected,actual)
+    return     
+
+class Conditional(unittest.TestCase):
+  def test_switch_case(i):
+    print('Testing switch case statement')
+    switcher={
+      'Novice':50,
+      'Beginner':150,
+      'Expert':350,
+      'Advanced':500
+    }
+    print('{} starts with {} points'.format(i,switcher.get(i,"Invalid Player Level")))
+    #print(i in switcher)
+
 
 if __name__ == "__main__":
-  test_set = {1,1,2,3,2,4,3,4}
-  test_value = 5
+  #a,b,c = hourly_employee_input()
+  #weekly_pay(a,str(b),str(c))
+
+  #test_set = {1,1,2,3,2,4,3,4}
+  #test_value = 5
   #in_set(test_set,test_value)
 
-  #avg_scores(get_test_scores())
   personDict = dict()
   #get_user_input()
+
   Alist = [2, 2, 3, 4, 3, 3, 2, 2, 1, 1, 2, 5]
-  p1 = Test.solution(Alist)
-  unittest.main(p1)
+  Interview().test_solution(Alist)
 
-
-
+  unittest.main()
