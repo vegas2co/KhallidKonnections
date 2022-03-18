@@ -195,6 +195,15 @@ def average_scores_zero(self, dictionary):
   actual = avg
   self.assertAlmostEqual(expected,actual)
   return
+
+def switch_case(i):
+  switcher={
+    'Novice':50,
+    'Beginner':150,
+    'Expert':350,
+    'Advanced':500
+  }
+  print('{} starts with {} points'.format(i,switcher.get(i,"Invalid Player Level")))
   
 
 if __name__ == "__main__":
