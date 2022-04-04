@@ -156,7 +156,7 @@ class Scores(unittest.TestCase):
       thisdict = {"test1": 99,"test2": 98,"test3": 97,"test4": 96,"test5": 95}
       avg = 0
       for value in thisdict.values():
-        print("{}".format(value))
+        print(value)
         avg += value
       length = len(thisdict)
       avg = avg / length
@@ -214,7 +214,7 @@ if __name__ == "__main__":
   personDict = dict()
   #get_user_input()
 
-  Alist = [2, 2, 3, 4, 3, 3, 2, 2, 1, 1, 2, 5]
-  Interview().test_solution(Alist)
+  #Alist = [2, 2, 3, 4, 3, 3, 2, 2, 1, 1, 2, 5]
+  #Interview().test_solution(Alist)
 
-  unittest.main()
+  unittest.main(Scores())
