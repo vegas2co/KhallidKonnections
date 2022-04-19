@@ -21,6 +21,6 @@ class BasePageElement(object):
 
         driver = obj.driver
         WebDriverWait(driver, 100).until(
-            lambda driver: driver.find_element(By.NAME, self.locator))
+        lambda driver: driver.find_element(By.NAME, self.locator))
         element = driver.find_element(By.NAME, self.locator)
         return element.get_attribute("value")
