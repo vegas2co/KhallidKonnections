@@ -17,10 +17,6 @@ button1 = Button (root, text='Click Meal Generator')
 ###################### FUNCTIONALITY ######################
 
 
-
-
-
-
 ###################### BUTTONS ######################
 
 #button1 = Button (root, text='Click Meal Generator', command=dailyMeals)
@@ -51,8 +47,17 @@ class Student(Person):
     def update(self,sd):
         self.sd = sd
 
-x = Student("Mike", "Olsen", '40000', '234')
-x.printname()
-x.asdf()
-x.update('3245647')
-x.asdf()
+def bs():
+    n = 21
+    if n > 20 and n % 2 == 0:
+        print('Wierd')
+    else:
+        print('Not Weird')
+
+#x = Student("Mike", "Olsen", '40000', '234')
+#x.printname()
+#x.asdf()
+#x.update('3245647')
+#x.asdf()
+
+bs()

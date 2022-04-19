@@ -90,7 +90,7 @@ class YoutubeSearch(unittest.TestCase):
         main_page.click_khallid_konnections_page()
         sleep(2)
         main_page.click_khallid_konnections_page()
-        sleep(1)
+        sleep(120)
 
     def tearDown(self):
         self.driver.close()

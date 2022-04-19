@@ -8,7 +8,7 @@ driver = webdriver.Chrome(PATH)
 
 def google():
     EXPAND_WINDOW = driver.maximize_window()
-    driver.get("http://www.google.com")
+    driver.get("http://www.youtube.com")
 
 #Google Search Bar
 '''
