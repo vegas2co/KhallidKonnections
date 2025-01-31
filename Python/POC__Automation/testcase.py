@@ -1,7 +1,7 @@
 '''
 Webpage Object Modal Automation
 By: Khallid Williams
-Testing Google, Facebook, Youtube, Etc
+Testing Google, Facebook, Youtube, Yahoo Mail.
 
 Notes:
 YOUTUBE does not like Keys.ENTER
@@ -96,5 +96,27 @@ class YoutubeSearch(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+class YahooMail(unittest.TestCase):
+    """A sample test class to show how page object works"""
+
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+        self.driver.get("https://mail.yahoo.com")
+
+    def test_login_yahoo_mail(self):
+        yahoo_page = page.YahooLogin(self.driver)
+        main_page = page.MainPage(self.driver)
+        self.assertTrue(main_page.is_title_matches('Yahoo Mail'), "mail.yahoo.com title doesn't match.")
+        yahoo_page.login_to_yahoo_mail('williams_khallid@yahoo.com', 'Valerie72')
+        yahoo_page.confirm_login()
+        yahoo_page.search_yahoo_mail("khallid konnections")
+        sleep(7)
+        self.assertTrue(yahoo_page.is_inbox_loaded(), "Inbox not loaded.")
+
+    def tearDown(self):
+        self.driver.close()
+
 if __name__ == "__main__":
-    unittest.main() #Add class to test one by YoutubeSearch
+    unittest.main(YahooMail()) #Add class to test one by YoutubeSearch
+    

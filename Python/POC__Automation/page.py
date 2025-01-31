@@ -1,5 +1,6 @@
 from elements import BasePageElement
 from locators import MainPageLocators
+from selenium.webdriver.common.keys import Keys
 
 from time import sleep
 
@@ -74,4 +75,28 @@ class SearchResultsPage(BasePage):
         # Probably should search for this text in the specific page
         # element, but as for now it works fine
         return "No results found." not in self.driver.page_source
+    
+class YahooLogin(BasePage):
+    """Search results page action methods come here"""
+
+    def login_to_yahoo_mail(self, username, password):
+        self.driver.find_element(*MainPageLocators.Yahoo_Signin).click()
+        self.driver.find_element(*MainPageLocators.Yahoo_Username).send_keys(username)
+        self.driver.find_element(*MainPageLocators.Yahoo_Next_Button).click()
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.Yahoo_Password).send_keys(password)
+        self.driver.find_element(*MainPageLocators.Yahoo_Next_Button).click()
+
+    def confirm_login(self):
+        try:
+            self.driver.find_element(*MainPageLocators.Yahoo_Confirm_Signin).click()
+        except:
+            print('Already signed in')
+    
+    def search_yahoo_mail(self, search):
+        self.driver.find_element(*MainPageLocators.Yahoo_SearchBox).send_keys(search)
+        self.driver.find_element(*MainPageLocators.Yahoo_SearchBox).send_keys(Keys.RETURN)
+    
+    def is_inbox_loaded(self):
+        return "Inbox" in self.driver.page_source
 
