@@ -1,7 +1,6 @@
 from elements import BasePageElement
 from locators import MainPageLocators
 from selenium.webdriver.common.keys import Keys
-
 from time import sleep
 
 class SearchTextElement(BasePageElement):
