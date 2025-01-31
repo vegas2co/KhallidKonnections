@@ -12,14 +12,15 @@ from selenium import webdriver
 import page
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
 
 G_KK = 'Khallid Konnections' + Keys.RETURN
 class PythonOrgSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
     def setUp(self):
-        self.PATH = '/Users/khallidwilliams/Desktop/Khallid Konnections/chromedriver'
-        self.driver = webdriver.Chrome(self.PATH)
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
         self.driver.get("http://www.python.org")
 
     def test_search_in_python_org(self):
@@ -46,8 +47,8 @@ class GoogleSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
     def setUp(self):
-        self.PATH = '/Users/khallidwilliams/Desktop/Khallid Konnections/chromedriver'
-        self.driver = webdriver.Chrome(self.PATH)
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
         self.driver.get("https://www.google.com")
 
     def test_search_in_google(self):
@@ -73,8 +74,8 @@ class YoutubeSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
     def setUp(self):
-        self.PATH = '/Users/khallidwilliams/Desktop/Khallid Konnections/chromedriver'
-        self.driver = webdriver.Chrome(self.PATH)
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
         self.driver.get("http://www.youtube.com")
 
     def test_search_in_youtube(self):
@@ -96,4 +97,4 @@ class YoutubeSearch(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main(YoutubeSearch()) #Add class to test one by one
+    unittest.main() #Add class to test one by YoutubeSearch
