@@ -134,6 +134,26 @@ class DemoQA(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+class BingSearch(unittest.TestCase):
+    """A sample test class to navigate to bing and search for Khallid Konnections"""
+
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+        self.driver.get("https://www.bing.com")
+
+    def test_search_in_bing(self):
+        bing_page = page.FreeStylePage(self.driver)
+        #self.assertTrue(bing_page.is_title_matches('Bing'), "bing.com title doesn't match.")
+        bing_page.navigateToBing()
+        bing_page.openNewTab()
+        bing_page.closeTab()
+        bing_page.searchSuperBowls('Super Bowls')
+        bing_page.takeScreenShot()
+
+    def tearDown(self):
+        self.driver.close()
+
 if __name__ == "__main__":
-    unittest.main(YahooMail()) #Add class to test one by YoutubeSearch
+    unittest.main(BingSearch()) #Add class to test one by YoutubeSearch
     

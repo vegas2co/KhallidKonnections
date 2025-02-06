@@ -32,5 +32,5 @@ class MainPageLocators(object):
     QADemo_Address = (By.XPATH, '//*[@id="currentAddress"]')
     QADemo_submitButton = (By.XPATH, '//*[@id="submit"]')
 
-    
-
+    #Bing   
+    Bing_Search = (By.XPATH, '//*[@id="sb_form_q"]')
