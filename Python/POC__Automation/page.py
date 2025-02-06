@@ -98,4 +98,17 @@ class YahooLogin(BasePage):
     
     def is_inbox_loaded(self):
         return "Inbox" in self.driver.page_source
+    
+class QADemo(BasePage):
+    """Search results page action methods come here"""
+
+    def fill_out_form(self, firstname, lastname, email, phone, address, subject):
+        self.driver.find_element(*MainPageLocators.QADemo_FirstName).send_keys(firstname)
+        self.driver.find_element(*MainPageLocators.QADemo_LastName).send_keys(lastname)
+        self.driver.find_element(*MainPageLocators.QADemo_Email).send_keys(email)
+        self.driver.find_element(*MainPageLocators.QADemo_Phone).send_keys(phone)
+        sleep(3)
+        self.driver.find_element(*MainPageLocators.QADemo_Subject).send_keys(subject)
+        self.driver.find_element(*MainPageLocators.QADemo_Address).send_keys(address)
+        #self.driver.find_element(*MainPageLocators.QADemo_submitButton).click()
 

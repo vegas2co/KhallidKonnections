@@ -44,7 +44,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.close()
 
 class GoogleSearch(unittest.TestCase):
-    """A sample test class to show how page object works"""
+    """A sample test class to navigate to google and type in Khallid Konnections"""
 
     def setUp(self):
         self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
@@ -71,7 +71,7 @@ class GoogleSearch(unittest.TestCase):
         self.driver.close()
 
 class YoutubeSearch(unittest.TestCase):
-    """A sample test class to show how page object works"""
+    """A sample test class to play a video and make it full screen"""
 
     def setUp(self):
         self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
@@ -97,7 +97,7 @@ class YoutubeSearch(unittest.TestCase):
         self.driver.close()
 
 class YahooMail(unittest.TestCase):
-    """A sample test class to show how page object works"""
+    """A sample test class to login to Yahoo Mail and search for Khallid Konnections"""
 
     def setUp(self):
         self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
@@ -113,6 +113,23 @@ class YahooMail(unittest.TestCase):
         yahoo_page.search_yahoo_mail("khallid konnections")
         sleep(7)
         self.assertTrue(yahoo_page.is_inbox_loaded(), "Inbox not loaded.")
+
+    def tearDown(self):
+        self.driver.close()
+
+class DemoQA(unittest.TestCase):
+    """A sample test class to navigate to demoqa and fill out a form"""
+
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+        self.driver.get("https://demoqa.com/automation-practice-form")
+
+    def test_demoqa(self):
+        qa_page = page.QADemo(self.driver)
+        main_page = page.MainPage(self.driver)
+        self.assertTrue(main_page.is_title_matches('DEMOQA'), "demoqa.com title doesn't match.")
+        qa_page.fill_out_form('Khallid', 'Williams', 'qadummy@test.com', '1234567890', '1234 Test St', 'Math')
 
     def tearDown(self):
         self.driver.close()

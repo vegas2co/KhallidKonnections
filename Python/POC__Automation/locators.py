@@ -22,5 +22,15 @@ class MainPageLocators(object):
     Yahoo_Password = (By.XPATH, '//*[@id="login-passwd"]')
     Yahoo_Confirm_Signin = (By.XPATH, '//*[@id="login-signin"]')
     Yahoo_SearchBox = (By.XPATH, '/html/body/header/div/div/div[3]/div/div[2]/div/div/div/div[1]/ul/li/div/div/input[1]')
+
+    #QADEMO
+    QADemo_FirstName = (By.XPATH, '//*[@id="firstName"]')
+    QADemo_LastName = (By.XPATH, '//*[@id="lastName"]')
+    QADemo_Email = (By.XPATH, '//*[@id="userEmail"]')
+    QADemo_Phone = (By.XPATH, '//*[@id="userNumber"]')
+    QADemo_Subject = (By.XPATH, '//*[@id="subjectsInput"]')
+    QADemo_Address = (By.XPATH, '//*[@id="currentAddress"]')
+    QADemo_submitButton = (By.XPATH, '//*[@id="submit"]')
+
     
 
