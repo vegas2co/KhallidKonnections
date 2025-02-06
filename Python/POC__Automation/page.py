@@ -112,3 +112,28 @@ class QADemo(BasePage):
         self.driver.find_element(*MainPageLocators.QADemo_Address).send_keys(address)
         #self.driver.find_element(*MainPageLocators.QADemo_submitButton).click()
 
+class FreeStylePage(BasePage):
+
+    def navigateToBing(self):
+        self.driver.get("http://www.bing.com")
+        sleep(2)
+    
+    def openNewTab(self):
+        self.driver.execute_script("window.open('');") #open tab
+        self.driver.switch_to.window(self.driver.window_handles[1]) #switch to tab
+        self.driver.get('http://stackoverflow.com/')
+        sleep(2)
+    
+    def closeTab(self):
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0]) #switch back to original tab
+
+    def searchSuperBowls(self, search):
+        self.driver.find_element(*MainPageLocators.Bing_Search).send_keys(search)
+        self.driver.find_element(*MainPageLocators.Bing_Search).send_keys(Keys.RETURN)
+        sleep(4)
+
+    def takeScreenShot(self):
+        self.driver.save_screenshot('/Users/khallidwilliams/Downloads/SuperBowlScreenShot.png')
+        sleep(2)
+        print("Screenshot taken")
