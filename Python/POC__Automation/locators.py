@@ -34,3 +34,16 @@ class MainPageLocators(object):
 
     #Bing   
     Bing_Search = (By.XPATH, '//*[@id="sb_form_q"]')
+
+    #Google Travel
+    GoogleTravelOrigin = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[1]/div[1]/div[1]/div/div[2]/div[1]/div[1]/div/div/div[1]/div/div/input')
+    GoogleTravelDestination = (By.CSS_SELECTOR, '#i23 > div.e5F5td.vxNK6d > div > div > div.cQnuXe.k0gFV > div > div > input')
+    GoogleTravelDestinationClick = (By.CLASS_NAME, 'CwL3Ec')
+    GoogleTravelDeparture = (By.CSS_SELECTOR, 'body > c-wiz.zQTmif.SSPGKf > div > div:nth-child(2) > c-wiz > div.cKvRXe > c-wiz > div.vg4Z0e > div:nth-child(1) > div.SS6Dqf.POQx1c > div.AJxgH > div > div.rIZzse > div.bgJkKe.K0Tsu > div > div > div.cQnuXe.k0gFV > div > div > div:nth-child(1) > div > div.GYgkab.YICvqf.kStSsc.ieVaIb > div > input')
+    GoogleTravelReturn = (By.CSS_SELECTOR, 'body > c-wiz.zQTmif.SSPGKf > div > div:nth-child(2) > c-wiz > div.cKvRXe > c-wiz > div.vg4Z0e > div:nth-child(1) > div.SS6Dqf.POQx1c > div.AJxgH > div > div.rIZzse > div.bgJkKe.K0Tsu > div > div > div.cQnuXe.k0gFV > div > div > div:nth-child(1) > div > div.GYgkab.YICvqf.lJODHb.qXDC9e > div > input')
+    GoogleTravelDateDoneButton = (By.CSS_SELECTOR, 'button.DuMIQc:nth-child(1) > span:nth-child(4)')
+    GoogleTravelSearchButton = (By.CSS_SELECTOR, 'body > c-wiz.zQTmif.SSPGKf > div > div:nth-child(2) > c-wiz > div.cKvRXe > c-wiz > div.vg4Z0e > div:nth-child(1) > div.SS6Dqf.POQx1c > div.MXvFbd > div > button')
+
+    DepartFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]')
+    ReturnFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]')  
+    ContinueButton = (By.CSS_SELECTOR, '.DuMIQc')

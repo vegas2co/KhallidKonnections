@@ -137,3 +137,43 @@ class FreeStylePage(BasePage):
         self.driver.save_screenshot('/Users/khallidwilliams/Downloads/SuperBowlScreenShot.png')
         sleep(2)
         print("Screenshot taken")
+
+class GoogleTravelBot(BasePage):
+
+    def navigateToGoogleTravel(self):
+        self.driver.get("https://www.google.com/travel/flights?gl=US&hl=en-US")
+        sleep(2)
+    
+    def testSearchFlights(self, destination, date, returnDate):
+        self.driver.find_element(*MainPageLocators.GoogleTravelDestination).send_keys(destination)
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.GoogleTravelDestinationClick).click()
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.GoogleTravelDeparture).send_keys(date)
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.GoogleTravelReturn).click()
+        self.driver.find_element(*MainPageLocators.GoogleTravelReturn).send_keys(returnDate)
+        self.driver.find_element(*MainPageLocators.GoogleTravelReturn).send_keys(Keys.RETURN)
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.GoogleTravelDateDoneButton).click()
+        self.driver.find_element(*MainPageLocators.GoogleTravelSearchButton).click()
+        sleep(10)
+
+    def takeScreenShot(self):
+        self.driver.save_screenshot('/Users/khallidwilliams/Downloads/FlightScreenShot.png')
+        sleep(2)
+        print("Screenshot taken")
+
+    def is_top_departing_flights(self):
+        self.driver.find_element('.eQ35Ce > div:nth-child(2) > div:nth-child(1) > h3:nth-child(1)').text
+
+    def testPurchseFlight(self):
+        self.driver.find_element(*MainPageLocators.DepartFlight).click()
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.ReturnFlight).click()
+        sleep(2)
+        self.driver.execute_script("window.scrollBy(0, 200);")
+        print("Scrolled")
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.ContinueButton).click()
+        print("Navigated to Airlines webpage")

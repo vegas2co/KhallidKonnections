@@ -154,6 +154,23 @@ class BingSearch(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+class GoogleTravelBot(unittest.TestCase):
+    """A sample test class to navigate to google travel and search for a flight"""
+
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+
+    def testSearchFlights(self):
+        travel_page = page.GoogleTravelBot(self.driver)
+        travel_page.navigateToGoogleTravel()
+        travel_page.testSearchFlights('New York', '2025-03-05', '2025-03-10')
+        #self.assertTrue("the text you want to check for" in travel_page.is_top_departing_flights(), "No results found.")
+        travel_page.testPurchseFlight()
+
+    def tearDown(self):
+        self.driver.close()
+
 if __name__ == "__main__":
-    unittest.main(BingSearch()) #Add class to test one by YoutubeSearch
+    unittest.main(GoogleTravelBot())
     
