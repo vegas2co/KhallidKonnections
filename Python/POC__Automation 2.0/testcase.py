@@ -1,7 +1,7 @@
 '''
 Webpage Object Modal Automation
 By: Khallid Williams
-Testing Google, Facebook, Youtube, Yahoo Mail.
+Testing Google, Facebook, Youtube, Yahoo Mail, QaDemo, Google Flights.
 
 Notes:
 YOUTUBE does not like Keys.ENTER
@@ -16,6 +16,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 
 G_KK = 'Khallid Konnections' + Keys.RETURN
+
 class PythonOrgSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
@@ -61,6 +62,7 @@ class GoogleSearch(unittest.TestCase):
         self.assertTrue(assertion.is_title_matches('Google'), "google.com title doesn't match.")
         action.search_text_element = G_KK
         sleep(3)
+
         action.click_khallid_konnections_link()
         sleep(3)
         search_results_page = assertion.SearchResultsPage(self.driver)
@@ -188,5 +190,5 @@ class GoogleTravelBot(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main(YoutubeSearch())
+    unittest.main(GoogleSearch())
     
