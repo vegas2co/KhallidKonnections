@@ -49,3 +49,12 @@ class MainPageLocators(object):
     ContinueButton = (By.CSS_SELECTOR, '.DuMIQc')
 
     TopFlightsText = (By.CSS_SELECTOR, '.eQ35Ce > div:nth-child(2) > div:nth-child(1) > h3:nth-child(1)')
+
+    #NIKE
+    Nike_Search = (By.XPATH, '//*[@id="nav-search-icon"]')
+    Nike_Search_Bar = (By.XPATH, '//*[@id="gn-search-input"]')
+    Nike_Size = (By.XPATH, '/html/body/div[5]/div/main/div[2]/div[3]/div[3]/fieldset/div[1]/div/div[11]') 
+    Nike_Add_To_Cart = (By.XPATH, '/html/body/div[5]/div/main/div[2]/div[3]/div[5]/div[1]/button')
+
+    AirmaxPlusButton = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[5]/div[1]/div[1]/div[2]/div/div/div/div/nav/div[2]/div/div/button[9]')
+    SelectNikeAirMaxPlusOG = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[5]/div[2]/main/section/div/div[1]/div/figure/a[2]/div/img')

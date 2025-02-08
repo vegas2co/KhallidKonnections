@@ -156,3 +156,29 @@ class GoogleTravelBot(BasePage):
         sleep(2)
         self.driver.find_element(*MainPageLocators.ContinueButton).click()
         print("Navigated to Airlines webpage")
+
+class NikeBot(BasePage):
+
+    def searchNike(self, search):
+        self.driver.find_element(*MainPageLocators.Nike_Search).click()
+        sleep(2)
+        self.driver.find_element(*MainPageLocators.Nike_Search_Bar).send_keys(search)
+        self.driver.find_element(*MainPageLocators.Nike_Search_Bar).send_keys(Keys.RETURN)
+        sleep(5)
+    
+    def selectNikeShoe(self):
+        self.driver.find_element(*MainPageLocators.SelectNikeAirMaxPlusOG).click()
+        sleep(5)
+
+    def clickAirMaxButton(self):
+        self.driver.find_element(*MainPageLocators.AirmaxPlusButton).click()
+        sleep(3)
+    
+    def selectNikeSize(self):
+        self.driver.find_element(*MainPageLocators.Nike_Size).click()
+        sleep(2)
+    
+    def addToCart(self):
+        self.driver.find_element(*MainPageLocators.Nike_Add_To_Cart).click()
+        sleep(2)
+        print("Added to cart")

@@ -1,7 +1,7 @@
 '''
 Webpage Object Modal Automation
 By: Khallid Williams
-Testing Google, Facebook, Youtube, Yahoo Mail.
+Testing Google, Facebook, Youtube, Yahoo Mail, QaDemo, Google Flights.
 
 Notes:
 YOUTUBE does not like Keys.ENTER
@@ -16,6 +16,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 
 G_KK = 'Khallid Konnections' + Keys.RETURN
+
 class PythonOrgSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
 
@@ -61,6 +62,7 @@ class GoogleSearch(unittest.TestCase):
         self.assertTrue(assertion.is_title_matches('Google'), "google.com title doesn't match.")
         action.search_text_element = G_KK
         sleep(3)
+
         action.click_khallid_konnections_link()
         sleep(3)
         search_results_page = assertion.SearchResultsPage(self.driver)
@@ -187,6 +189,30 @@ class GoogleTravelBot(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+class NikeSearch(unittest.TestCase):
+    """A sample test class to navigate to nike and search for a shoe"""
+
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+        self.driver.get("https://www.nike.com")
+
+    def test_search_in_nike(self):
+        nike_page = actions.NikeBot(self.driver)
+        assert_page = assertions.MainPage(self.driver)
+
+        self.assertTrue(assert_page.is_title_matches('Nike'), "nike.com title doesn't match.")
+        nike_page.searchNike('Airmax')
+        nike_page.clickAirMaxButton()
+        nike_page.selectNikeShoe()
+        self.driver.execute_script("window.scrollBy(0, 200);")
+        nike_page.selectNikeSize()
+        self.driver.execute_script("window.scrollBy(0, 500);")
+        nike_page.addToCart()
+
+    def tearDown(self):
+        self.driver.close()
+
 if __name__ == "__main__":
-    unittest.main(YoutubeSearch())
+    unittest.main(NikeSearch())
     
