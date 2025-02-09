@@ -27,6 +27,11 @@ class BasePage(object):
         self.driver.execute_script("window.scrollTo(0, "+str(Y)+")")
         sleep(2)
 
+    def takeScreenShot(self, name):
+        self.driver.save_screenshot('/Users/khallidwilliams/Downloads/'+ name +'.png')
+        sleep(2)
+        print("Screenshot taken")
+
 class MainPage(BasePage):
     """Home page action methods come here. I.e. Python.org"""
 
