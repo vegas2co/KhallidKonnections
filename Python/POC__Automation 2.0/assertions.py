@@ -63,9 +63,49 @@ class FreeStylePage(BasePage):
     """Search results page action methods come here"""
 
 class GoogleTravelBot(BasePage):
+    def is_departing_flights_list(self):
+        #This captures the flight information
+        flights = self.driver.find_elements(*MainPageLocators.DepartFlightList)
+        flight_data = []
+        for flight in flights:
+            try:
+                flight_time = flight.find_element(*MainPageLocators.DepartFlightTime).text
+                flight_length = flight.find_element(*MainPageLocators.DepartFlightLength).text
+                non_stops = flight.find_element(*MainPageLocators.DepartNonStops).text
+                price = flight.find_element(*MainPageLocators.DepartFlightPrice).text
+                flight_data.append({
+                    'flight_time': flight_time,
+                    'flight_length': flight_length,
+                    'non_stops': non_stops,
+                    'price': price
+            })
+            except NoSuchElementException:
+                continue
+            print(flight_data)
+            print('done with arriving flight info')
+        return flight_data
 
-    def is_top_departing_flights(self):
-        self.driver.find_element(*MainPageLocators.TopFlightsText)
+    def is_returning_flights_list(self):
+        #This captures the flight information
+        flights = self.driver.find_elements(*MainPageLocators.ReturnFlightList)
+        flight_data = []
+        for flight in flights:
+            try:
+                flight_time = flight.find_element(*MainPageLocators.ReturnFlightTime).text
+                flight_length = flight.find_element(*MainPageLocators.ReturnFlightLength).text
+                non_stops = flight.find_element(*MainPageLocators.ReturnNonStops).text
+                price = flight.find_element(*MainPageLocators.ReturnFlightPrice).text
+                flight_data.append({
+                    'flight_time': flight_time,
+                    'flight_length': flight_length,
+                    'non_stops': non_stops,
+                    'price': price
+            })
+            except NoSuchElementException:
+                continue
+            print(flight_data)
+            print('done with flight departing info')
+        return flight_data
 
 class NikeBot(BasePage):
 

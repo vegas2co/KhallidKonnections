@@ -155,12 +155,14 @@ class BingSearch(unittest.TestCase):
         self.driver.get("https://www.bing.com")
 
     def test_search_in_bing(self):
+        base_page = actions.BasePage(self.driver)
         bing_page = actions.FreeStylePage(self.driver)
         assert_page = assertions.MainPage(self.driver)
 
         self.assertTrue(assert_page.is_title_matches('Search - Microsoft Bing'), "bing.com title doesn't match.")
-        bing_page.navigateToBing()
-        bing_page.openNewTab()
+        base_page.navigateTo('http://bing.com/')
+        bing_page.openNewTab(1)
+        base_page.navigateTo('http://stackoverflow.com/')
         bing_page.closeTab()
         bing_page.searchSuperBowls('Super Bowls')
         bing_page.takeScreenShot()
@@ -176,15 +178,20 @@ class GoogleTravelBot(unittest.TestCase):
         self.driver = webdriver.Firefox(service=self.PATH)
 
     def testSearchFlights(self):
+        yahoo_mail = YahooMail()
+        base_page = actions.BasePage(self.driver)
         travel_page = actions.GoogleTravelBot(self.driver)
         assert_travel_page = assertions.GoogleTravelBot(self.driver)
         assert_main = assertions.MainPage(self.driver)
     
         assert_main.is_title_matches('Google Flights - Find Cheap Flight Options & Track Prices'), "google.com title doesn't match."
-        travel_page.navigateToGoogleTravel()
+        base_page.navigateTo('https://www.google.com/travel/flights?gl=US&hl=en-US')
         travel_page.testSearchFlights('New York', '2025-03-05', '2025-03-10')
-        assert_travel_page.is_top_departing_flights()
-        travel_page.testPurchseFlight()
+        assert_travel_page.is_departing_flights_list()
+        travel_page.testDepartFlight()
+        assert_travel_page.is_returning_flights_list()
+        travel_page.testReturnFlight()
+        travel_page.clickContinueButton()
 
     def tearDown(self):
         self.driver.close()
@@ -228,9 +235,43 @@ class NikeSearch(unittest.TestCase):
         base_page.scroll(200)
         base_page.takeScreenShot("Jordan1")
 
+    def tearDown(self):
+        self.driver.close()
+
+class TestClass(unittest.TestCase):
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+
+    def test_search_in_google(self):
+        test_google_flights = GoogleTravelBot()
+        test_yahoo_mail = YahooMail()
+        test_nike = NikeSearch()
+        test_bing = BingSearch()
+        test_youtube = YoutubeSearch()
+
+        test_google_flights.setUp()
+        test_google_flights.testSearchFlights()
+        test_google_flights.tearDown()
+
+        test_yahoo_mail.setUp()
+        test_yahoo_mail.test_login_yahoo_mail()
+        test_yahoo_mail.tearDown()
+
+        test_nike.setUp()
+        test_nike.test_search_in_nike()
+        test_nike.tearDown()
+
+        test_bing.setUp()
+        test_bing.test_search_in_bing()
+        test_bing.tearDown()
+
+        test_youtube.setUp()
+        test_youtube.test_search_in_youtube()
+        test_youtube.tearDown()
 
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main(NikeSearch())
+    unittest.main(TestClass())
