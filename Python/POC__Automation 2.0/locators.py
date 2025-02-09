@@ -44,11 +44,24 @@ class MainPageLocators(object):
     GoogleTravelDateDoneButton = (By.CSS_SELECTOR, 'button.DuMIQc:nth-child(1) > span:nth-child(4)')
     GoogleTravelSearchButton = (By.CSS_SELECTOR, 'body > c-wiz.zQTmif.SSPGKf > div > div:nth-child(2) > c-wiz > div.cKvRXe > c-wiz > div.vg4Z0e > div:nth-child(1) > div.SS6Dqf.POQx1c > div.MXvFbd > div > button')
 
-    DepartFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]')
-    ReturnFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]')  
+    DepartFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]/div/div[2]')  
+    ReturnFlight = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]/div/div[2]')
     ContinueButton = (By.CSS_SELECTOR, '.DuMIQc')
 
     TopFlightsText = (By.CSS_SELECTOR, '.eQ35Ce > div:nth-child(2) > div:nth-child(1) > h3:nth-child(1)')
+
+    #Google Travel Assert
+    DepartFlightList = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul')
+    DepartFlightTime = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]/div/div[2]/div/div[2]/div/div[2]/div[1]')
+    DepartFlightLength = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]/div/div[2]/div/div[2]/div/div[3]/div')
+    DepartNonStops = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[2]/div/div[2]/div/div[2]/div/div[4]/div[1]/span')
+    DepartFlightPrice = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/div/div[2]/div[1]/ul/li[1]/div/div[2]/div/div[2]/div/div[6]/div[1]/div[2]/span')
+
+    ReturnFlightList = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul')
+    ReturnFlightTime = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]/div/div[2]/div/div[2]/div/div[2]/div[1]/span')
+    ReturnFlightLength = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]/div/div[2]/div/div[2]/div/div[3]/div')
+    ReturnNonStops = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]/div/div[2]/div/div[2]/div/div[4]/div[1]/span')
+    ReturnFlightPrice = (By.XPATH, '/html/body/c-wiz[2]/div/div[2]/c-wiz/div[1]/c-wiz/div[2]/div[2]/div[3]/ul/li[1]/div/div[2]/div/div[2]/div/div[6]/div[1]/div[2]/span')
 
     #NIKE
     Nike_Search = (By.XPATH, '//*[@id="nav-search-icon"]')

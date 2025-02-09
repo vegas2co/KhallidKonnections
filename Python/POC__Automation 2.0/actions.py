@@ -32,6 +32,10 @@ class BasePage(object):
         sleep(2)
         print("Screenshot taken")
 
+    def navigateTo(self, url):
+        self.driver.get(url)
+        sleep(2)
+
 class MainPage(BasePage):
     """Home page action methods come here. I.e. Python.org"""
 
@@ -100,15 +104,10 @@ class QADemo(BasePage):
         #self.driver.find_element(*MainPageLocators.QADemo_submitButton).click()
 
 class FreeStylePage(BasePage):
-
-    def navigateToBing(self):
-        self.driver.get("http://www.bing.com")
-        sleep(2)
     
-    def openNewTab(self):
+    def openNewTab(self,tab_num):
         self.driver.execute_script("window.open('');") #open tab
-        self.driver.switch_to.window(self.driver.window_handles[1]) #switch to tab
-        self.driver.get('http://stackoverflow.com/')
+        self.driver.switch_to.window(self.driver.window_handles[tab_num]) #switch to tab
         sleep(2)
     
     def closeTab(self):
@@ -151,11 +150,15 @@ class GoogleTravelBot(BasePage):
         sleep(2)
         print("Screenshot taken")
 
-    def testPurchseFlight(self):
+    def testDepartFlight(self):
         self.driver.find_element(*MainPageLocators.DepartFlight).click()
         sleep(2)
+    
+    def testReturnFlight(self):
         self.driver.find_element(*MainPageLocators.ReturnFlight).click()
         sleep(2)
+    
+    def clickContinueButton(self):
         self.driver.execute_script("window.scrollBy(0, 200);")
         print("Scrolled")
         sleep(2)
