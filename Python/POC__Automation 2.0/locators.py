@@ -58,3 +58,12 @@ class MainPageLocators(object):
 
     AirmaxPlusButton = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[5]/div[1]/div[1]/div[2]/div/div/div/div/nav/div[2]/div/div/button[9]')
     SelectNikeAirMaxPlusOG = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[5]/div[2]/main/section/div/div[1]/div/figure/a[2]/div/img')
+    Nike_Shoe_Name = (By.XPATH, '//*[@id="pdp_product_title"]')
+    
+    #Nike Modal
+    Nike_Error_Message_Modal = (By.XPATH, '/html/body/div[10]/div/div/div/div/div/div/div/div')
+    Nike_Error_Message_Modal_Title = (By.XPATH, '/html/body/div[10]/div/div/div/div/div/div/div/div/h2')
+    Nike_Error_Message_Modal_Text = (By.XPATH, '/html/body/div[10]/div/div/div/div/div/div/div/div/p[1]')
+
+    Nike_Search_Results = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[1]')
+    Nike_Search_Name = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[2]')

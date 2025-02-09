@@ -2,6 +2,10 @@ from elements import BasePageElement
 from locators import MainPageLocators
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class SearchTextElement(BasePageElement):
     """This class gets the search text from the specified locator"""
@@ -62,3 +66,37 @@ class GoogleTravelBot(BasePage):
 
     def is_top_departing_flights(self):
         self.driver.find_element(*MainPageLocators.TopFlightsText)
+
+class NikeBot(BasePage):
+
+    def is_nike_search_results(self):
+        return "Nike" in self.driver.page_source
+    
+    def is_bot_modal_present(self):
+        try:
+            modal = self.driver.find_element(*MainPageLocators.Nike_Error_Message_Modal)
+            modal_title = self.driver.find_element(*MainPageLocators.Nike_Error_Message_Modal_Title)
+            modal_text = self.driver.find_element(*MainPageLocators.Nike_Error_Message_Modal_Text)
+            assert modal.is_displayed(), "Modal is present but not displayed"
+            assert modal_title.is_displayed(), "Modal Title is present but not displayed"
+            assert modal_text.is_displayed(), "Modal Text is present but not displayed"
+        except NoSuchElementException:
+            self.fail("Modal is not present")
+
+    def is_nike_search_results_displayed(self):
+        try:
+            search_results = self.driver.find_element(*MainPageLocators.Nike_Search_Results)
+            search_name = self.driver.find_element(*MainPageLocators.Nike_Search_Name)
+            assert search_results.is_displayed(), "Search Results are present but not displayed"
+            assert search_name.is_displayed(), "Search Name is present but not displayed"
+        except NoSuchElementException:
+            self.fail("Search Results are not present")
+
+    def is_nike_shoe_name_displayed(self, shoe_text):
+        try:
+            shoe_name = self.driver.find_element(*MainPageLocators.Nike_Shoe_Name)
+            shoe_name_title = self.driver.find_element(*MainPageLocators.Nike_Shoe_Name).text
+            assert shoe_name.is_displayed(), "Shoe Name is present but not displayed"
+            assert shoe_name_title == shoe_text, f"Expected shoe name to be '{shoe_text}', but got '{shoe_name_title}'"
+        except NoSuchElementException:
+            self.fail("Shoe Name is not present")

@@ -198,21 +198,26 @@ class NikeSearch(unittest.TestCase):
         self.driver.get("https://www.nike.com")
 
     def test_search_in_nike(self):
+        base_page = actions.BasePage(self.driver)
         nike_page = actions.NikeBot(self.driver)
         assert_page = assertions.MainPage(self.driver)
+        assert_page_nike = assertions.NikeBot(self.driver)
 
-        self.assertTrue(assert_page.is_title_matches('Nike'), "nike.com title doesn't match.")
+        assert_page.is_title_matches('Nike')
         nike_page.searchNike('Airmax')
+        assert_page_nike.is_nike_search_results_displayed()
         nike_page.clickAirMaxButton()
+        assert_page_nike.is_nike_search_results_displayed()
         nike_page.selectNikeShoe()
-        self.driver.execute_script("window.scrollBy(0, 200);")
+        assert_page_nike.is_nike_shoe_name_displayed("Nike Air Max Plus OG")
+        base_page.scroll(200)
         nike_page.selectNikeSize()
-        self.driver.execute_script("window.scrollBy(0, 500);")
+        base_page.scroll(500)
         nike_page.addToCart()
+        assert_page_nike.is_bot_modal_present()
 
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
     unittest.main(NikeSearch())
-    
