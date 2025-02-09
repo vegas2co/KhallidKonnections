@@ -203,6 +203,7 @@ class NikeSearch(unittest.TestCase):
         assert_page = assertions.MainPage(self.driver)
         assert_page_nike = assertions.NikeBot(self.driver)
 
+        #Search first shoe Airmax Plus
         assert_page.is_title_matches('Nike')
         nike_page.searchNike('Airmax')
         assert_page_nike.is_nike_search_results_displayed()
@@ -215,6 +216,14 @@ class NikeSearch(unittest.TestCase):
         base_page.scroll(500)
         nike_page.addToCart()
         assert_page_nike.is_bot_modal_present()
+
+        #Search first shoe Jordan 1
+        nike_page.exit_modal()
+        base_page.scroll(-500)
+        nike_page.searchNike('Jordan 1')
+        assert_page_nike.is_nike_search_results_displayed()
+        nike_page.selectNikeShoe()
+        assert_page_nike.is_nike_shoe_name_displayed("Air Jordan 1 Retro High OG \"Black Toe\"")
 
     def tearDown(self):
         self.driver.close()
