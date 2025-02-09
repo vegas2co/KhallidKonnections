@@ -187,3 +187,8 @@ class NikeBot(BasePage):
         self.driver.find_element(*MainPageLocators.Nike_Add_To_Cart).click()
         sleep(2)
         print("Added to cart")
+
+    def exit_modal(self):
+        self.driver.find_element(*MainPageLocators.Nike_Exit_Modal).click()
+        sleep(2)
+        print("Modal closed")
