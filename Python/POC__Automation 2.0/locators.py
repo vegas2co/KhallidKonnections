@@ -81,3 +81,41 @@ class MainPageLocators(object):
 
     Nike_Search_Results = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[1]')
     Nike_Search_Name = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[2]')
+
+    #American Airlines
+    From_input_box = (By.XPATH, '//*[@id="reservationFlightSearchForm.originAirport"]')
+    To_input_box = (By.XPATH, '//*[@id="reservationFlightSearchForm.destinationAirport"]')
+    Departure_date = (By.XPATH, '//*[@id="aa-leavingOn"]')
+    Return_date = (By.XPATH, '//*[@id="aa-returningFrom"]')
+    Search_Button = (By.XPATH, '//*[@id="flightSearchForm.button.reSubmit"]')
+
+    #American Airlines assertions
+    booking_modal = (By.CSS_SELECTOR, "#booking-module-tabs")
+    Privacy_cookies_popup_modal = (By.ID, 'cookie-banner')
+    Privacy_cookies_popup_dismiss = (By.ID, 'button')
+
+    departing_flights_header = (By.XPATH, '//*[@id="header"]')
+    returning_flights_header = (By.XPATH, '/html/body/app-root/app-results/main/div/div[1]/div[1]/h1/span[1]')
+    choose_flight = (By.XPATH, '//*[@id="flight-1-product-group-MAIN"]')
+    select_flight = (By.XPATH, '//*[@id="slice-1-MAIN-coach"]')
+    choose_return_flight = (By.XPATH, '//*[@id="flight-2-product-group-MAIN"]')
+    select_return_flight = (By.XPATH, '//*[@id="slice-2-MAIN-coach"]')
+
+    Upgrade_to_main_plus_modal = (By.XPATH, '//*[@id="cdk-overlay-1"]')
+    Upgrade_to_main_plus_modal_exit = (By.XPATH, '/html/body/div[1]/div[2]/div/mat-dialog-container/div/div/app-main-cabin-upsell-desktop/div/div[1]/div[1]/button')
+    continue_as_guest_button = (By.XPATH, '//*[@id="continue-as-guest-btn"]')
+    loginIn_button = (By.XPATH, '//*[@id="login-continue-btn"]')
+
+    firstName = (By.XPATH, '//*[@id="passengers0.personalInformationForm.firstName"]')
+    lastName = (By.XPATH, '//*[@id="passengers0.personalInformationForm.lastName"]')
+    month_dropbox = (By.XPATH, '//*[@id="passengers0.dateComponentForm.month"]')
+    day_dropbox = (By.XPATH, '//*[@id="passengers0.dateComponentForm.day"]')
+    year_dropbox = (By.XPATH, '//*[@id="passengers0.dateComponentForm.year"]')
+    gender_dropbox = (By.XPATH, '//*[@id="passengers0.personalInformationForm.gender"]')
+    country_dropbox = (By.XPATH, '//*[@id="passengers0.residencyInfo.country"]')
+    state_dropbox = (By.XPATH, '//*[@id="passengers0.residencyInfo.state"]')
+    primary_email = (By.XPATH, '//*[@id="tripContact.email"]')
+    confirm_primary_email = (By.XPATH, '//*[@id="confirmEmail"]')
+    phoneNumber_dropbox = (By.XPATH, '//*[@id="tripContact.phones0.type"]')
+    phoneNumber_textbox = (By.XPATH, '//*[@id="phoneNumber"]')
+    continue_button = (By.XPATH, '//*[@id="passenger_button"]')
