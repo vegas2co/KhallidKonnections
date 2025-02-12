@@ -1,11 +1,11 @@
 from elements import BasePageElement
 from locators import MainPageLocators
-from selenium.webdriver.common.keys import Keys
-from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+import actions
 
 class SearchTextElement(BasePageElement):
     """This class gets the search text from the specified locator"""
@@ -140,3 +140,49 @@ class NikeBot(BasePage):
             assert shoe_name_title == shoe_text, f"Expected shoe name to be '{shoe_text}', but got '{shoe_name_title}'"
         except NoSuchElementException:
             self.fail("Shoe Name is not present")
+
+class AmericanAirlinesBot(BasePage):
+    def is_book_trip_present(self):
+        bookingContainer = self.driver.find_element(*MainPageLocators.booking_modal)
+        try:
+            assert bookingContainer.is_displayed()
+            print('Asserted is_book_trip_present')
+        except NoSuchElementException:
+            self.fail("Booking Container is not present")
+
+    def is_privacy_cookies_popup_present(self):
+        self.driver.implicitly_wait(3)
+        privacy_cookies_popup = self.driver.find_element(*MainPageLocators.Privacy_cookies_popup_modal)
+        privacy_cookies_popup_dismiss = self.driver.find_element(*MainPageLocators.Privacy_cookies_popup_dismiss)
+        print("Found Pop up modal")
+        try:
+            assert privacy_cookies_popup.is_displayed()
+            print('Asserted Privacy_cookies_popup is present')
+            self.driver.find_element(privacy_cookies_popup_dismiss).click()
+            print('Dismissed pop up')
+        except NoSuchElementException:
+            self.fail("Booking Container is not present")
+
+    def is_flights_header_present(self):
+        self.driver.implicitly_wait(60)
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="header"]'))
+        )
+
+    def is_departing_header_matching(self, header_text):
+        header = self.driver.find_element(*MainPageLocators.departing_flights_header).text
+        assert header == header_text, f"Expected header to be '{header_text}', but got '{header}'"
+
+    def is_returning_header_matching(self, header_text):
+        header = self.driver.find_element(*MainPageLocators.returning_flights_header).text
+        assert header == header_text, f"Expected header to be '{header_text}', but got '{header}'"
+
+    def is_upgrade_to_main_plus_modal_present(self):
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="cdk-overlay-1"]')) #Upgrade_to_main_plus_modal
+        )
+
+    def is_continue_as_guest_button_present(self):
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="continue-as-guest-btn"]')) #continue_as_guess_button
+        )

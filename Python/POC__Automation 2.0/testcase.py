@@ -1,7 +1,7 @@
 '''
 Webpage Object Modal Automation
 By: Khallid Williams
-Testing Google, Facebook, Youtube, Yahoo Mail, QaDemo, Google Flights.
+Testing Google, Facebook, Youtube, Yahoo Mail, QaDemo, Google Flights, Nike.
 
 Notes:
 YOUTUBE does not like Keys.ENTER
@@ -178,7 +178,6 @@ class GoogleTravelBot(unittest.TestCase):
         self.driver = webdriver.Firefox(service=self.PATH)
 
     def testSearchFlights(self):
-        yahoo_mail = YahooMail()
         base_page = actions.BasePage(self.driver)
         travel_page = actions.GoogleTravelBot(self.driver)
         assert_travel_page = assertions.GoogleTravelBot(self.driver)
@@ -238,6 +237,66 @@ class NikeSearch(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+class Airlines(unittest.TestCase):
+    """A sample test class to navigate to airlines and search for a flight""" 
+    
+    def setUp(self):
+        self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
+        self.driver = webdriver.Firefox(service=self.PATH)
+        
+    def test_search_in_airlines(self):
+        self.driver.maximize_window()
+        base_page = actions.BasePage(self.driver)
+        action_aa = actions.AmericanAirlinesBot(self.driver)
+        assert_aa = assertions.AmericanAirlinesBot(self.driver)
+
+        base_page.navigateTo('https://www.aa.com/homePage.do')
+        base_page.scroll(300)      
+        assert_aa.is_book_trip_present()
+        action_aa.enter_flight_info('NYC', 'LAX', '03/05/2025', '03/10/2025')
+        sleep(5)
+        action_aa.submit_flight()
+
+        #depart
+        assert_aa.is_flights_header_present()
+        assert_aa.is_departing_header_matching("Choose flights")
+        action_aa.choose_departing_flight() 
+        base_page.scroll(1000)
+        action_aa.select_departing_flight()
+
+        #return
+        assert_aa.is_returning_header_matching("Choose flights")
+        base_page.scroll(600)   
+        sleep(10)
+        action_aa.choose_returning_flgihts()
+        base_page.scroll(1500)
+        sleep(2)
+        action_aa.select_returning_flight()
+
+        #confimation
+        assert_aa.is_upgrade_to_main_plus_modal_present()
+        action_aa.click_upgrade_to_main_plus_modal_exit()
+        base_page.scroll(2500)
+        assert_aa.is_continue_as_guest_button_present()
+        action_aa.click_continue_as_guess_button()
+
+        base_page.scroll(500)
+        action_aa.enter_first_name("Quality")
+        action_aa.enter_last_name("Assurance")
+        action_aa.click_month(5)
+        action_aa.click_day(13)
+        action_aa.click_year(50)
+        action_aa.click_gender(1)
+        action_aa.click_country(1)
+        action_aa.click_state(46)
+        action_aa.enter_email('qa@test.com')
+        action_aa.enter_confirm_email('qa@test.com')
+        action_aa.click_primary_phone_dropdown(0)
+        action_aa.enter_primary_phone('2145559865')
+        base_page.scroll(2500)
+        action_aa.click_continue_button()
+
+
 class TestClass(unittest.TestCase):
     def setUp(self):
         self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
@@ -274,4 +333,4 @@ class TestClass(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main(TestClass())
+    unittest.main(Airlines())
