@@ -56,6 +56,7 @@ class GoogleSearch(unittest.TestCase):
         self.driver.get("https://www.google.com")
 
     def test_search_in_google(self):
+        self.driver.maximize_window()
         action = actions.MainPage(self.driver)
         assertion = assertions.MainPage(self.driver)
 
@@ -86,6 +87,7 @@ class YoutubeSearch(unittest.TestCase):
         self.driver.get("http://www.youtube.com")
 
     def test_search_in_youtube(self):
+        self.driver.maximize_window()
         action = actions.MainPage(self.driver)
         assertion = assertions.MainPage(self.driver)
         assertionSearch = assertions.SearchResultsPage(self.driver)
@@ -114,6 +116,7 @@ class YahooMail(unittest.TestCase):
         self.driver.get("https://mail.yahoo.com")
 
     def test_login_yahoo_mail(self):
+        self.driver.maximize_window()
         action = actions.YahooLogin(self.driver)
         assertionMain = assertions.MainPage(self.driver)
         assertionYahoo = assertions.YahooLogin(self.driver)
@@ -137,6 +140,7 @@ class DemoQA(unittest.TestCase):
         self.driver.get("https://demoqa.com/automation-practice-form")
 
     def test_demoqa(self):
+        self.driver.maximize_window()
         qa_page = actions.QADemo(self.driver)
         assertion = assertions.MainPage(self.driver)
 
@@ -155,6 +159,7 @@ class BingSearch(unittest.TestCase):
         self.driver.get("https://www.bing.com")
 
     def test_search_in_bing(self):
+        self.driver.maximize_window()
         base_page = actions.BasePage(self.driver)
         bing_page = actions.FreeStylePage(self.driver)
         assert_page = assertions.MainPage(self.driver)
@@ -178,6 +183,7 @@ class GoogleTravelBot(unittest.TestCase):
         self.driver = webdriver.Firefox(service=self.PATH)
 
     def testSearchFlights(self):
+        self.driver.maximize_window()
         base_page = actions.BasePage(self.driver)
         travel_page = actions.GoogleTravelBot(self.driver)
         assert_travel_page = assertions.GoogleTravelBot(self.driver)
@@ -210,6 +216,7 @@ class NikeSearch(unittest.TestCase):
         assert_page_nike = assertions.NikeBot(self.driver)
 
         #Search first shoe Airmax Plus
+        self.driver.maximize_window()
         assert_page.is_title_matches('Nike')
         nike_page.searchNike('Airmax')
         assert_page_nike.is_nike_search_results_displayed()
