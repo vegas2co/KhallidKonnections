@@ -302,6 +302,20 @@ class Airlines(unittest.TestCase):
         action_aa.enter_primary_phone('2145559865')
         base_page.scroll(2500)
         action_aa.click_continue_button()
+        sleep(20)
+
+        #Seats
+        base_page.scroll(200)
+        sleep(2)
+        action_aa.click_skip_seats_button()
+
+        #PayNow
+        action_aa.click_credit_debit_card_radio_button()
+        action_aa.fill_out_credit_card_info('Quality','Assurance','4111111111111111','0129','123 Main St','Dallas','Texas',9,'75002')
+        assert_aa.is_terms_and_conditions_present()
+        action_aa.click_terms_and_conditons()
+        assert_aa.is_pay_now_button_present()
+        #action_aa.click_pay_now_button()
 
 
 class TestClass(unittest.TestCase):
@@ -309,35 +323,13 @@ class TestClass(unittest.TestCase):
         self.PATH = Service('/Users/khallidwilliams/Desktop/Khallid Konnections/geckodriver')
         self.driver = webdriver.Firefox(service=self.PATH)
 
-    def test_search_in_google(self):
-        test_google_flights = GoogleTravelBot()
-        test_yahoo_mail = YahooMail()
-        test_nike = NikeSearch()
-        test_bing = BingSearch()
-        test_youtube = YoutubeSearch()
-
-        test_google_flights.setUp()
-        test_google_flights.testSearchFlights()
-        test_google_flights.tearDown()
-
-        test_yahoo_mail.setUp()
-        test_yahoo_mail.test_login_yahoo_mail()
-        test_yahoo_mail.tearDown()
-
-        test_nike.setUp()
-        test_nike.test_search_in_nike()
-        test_nike.tearDown()
-
-        test_bing.setUp()
-        test_bing.test_search_in_bing()
-        test_bing.tearDown()
-
-        test_youtube.setUp()
-        test_youtube.test_search_in_youtube()
-        test_youtube.tearDown()
+    def test_aa(self):
+        test_american_airlines = Airlines()
+        test_american_airlines.setUp()
+        test_american_airlines.test_search_in_airlines()
 
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main(Airlines())
+    unittest.main(TestClass())

@@ -1,5 +1,6 @@
 from elements import BasePageElement
 from locators import MainPageLocators
+from locators import AmericanAirlinesPageLocators
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import assertions
@@ -203,97 +204,136 @@ class NikeBot(BasePage):
 
 class AmericanAirlinesBot(BasePage):
     def enter_flight_info(self,departFlight,returnFlight,depateDate,returnDate):
-        self.driver.find_element(*MainPageLocators.From_input_box).click()
-        self.driver.find_element(*MainPageLocators.From_input_box).send_keys(Keys.COMMAND, "a")
-        self.driver.find_element(*MainPageLocators.From_input_box).send_keys(departFlight)
-        self.driver.find_element(*MainPageLocators.To_input_box).send_keys(returnFlight)
-        self.driver.find_element(*MainPageLocators.Departure_date).send_keys(depateDate)
-        self.driver.find_element(*MainPageLocators.Return_date).send_keys(returnDate)
+        self.driver.find_element(*AmericanAirlinesPageLocators.From_input_box).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.From_input_box).send_keys(Keys.COMMAND, "a")
+        self.driver.find_element(*AmericanAirlinesPageLocators.From_input_box).send_keys(departFlight)
+        self.driver.find_element(*AmericanAirlinesPageLocators.To_input_box).send_keys(returnFlight)
+        self.driver.find_element(*AmericanAirlinesPageLocators.Departure_date).send_keys(depateDate)
+        self.driver.find_element(*AmericanAirlinesPageLocators.Return_date).send_keys(returnDate)
 
     def submit_flight(self):
-        self.driver.find_element(*MainPageLocators.Search_Button).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.Search_Button).click()
 
     def choose_departing_flight(self):
-        self.driver.find_element(*MainPageLocators.choose_flight).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.choose_flight).click()
 
     def select_departing_flight(self):
-        self.driver.find_element(*MainPageLocators.select_flight).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.select_flight).click()
 
     def choose_returning_flgihts(self):
-        self.driver.find_element(*MainPageLocators.choose_return_flight).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.choose_return_flight).click()
 
     def select_returning_flight(self):
-        self.driver.find_element(*MainPageLocators.select_return_flight).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.select_return_flight).click()
 
     def click_upgrade_to_main_plus_modal_exit(self):
-        self.driver.find_element(*MainPageLocators.Upgrade_to_main_plus_modal_exit).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.Upgrade_to_main_plus_modal_exit).click()
 
     def click_continue_as_guess_button(self):
-        self.driver.find_element(*MainPageLocators.continue_as_guest_button).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.continue_as_guest_button).click()
 
     def enter_first_name(self,name):
-        self.driver.find_element(*MainPageLocators.firstName).click()
-        self.driver.find_element(*MainPageLocators.firstName).send_keys(name)
+        self.driver.find_element(*AmericanAirlinesPageLocators.firstName).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.firstName).send_keys(name)
 
 
     def enter_last_name(self,name):
-        self.driver.find_element(*MainPageLocators.lastName).click()
-        self.driver.find_element(*MainPageLocators.lastName).send_keys(name)
+        self.driver.find_element(*AmericanAirlinesPageLocators.lastName).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.lastName).send_keys(name)
 
     def click_month(self, index):
-        month = self.driver.find_element(*MainPageLocators.month_dropbox)
-        self.driver.find_element(*MainPageLocators.month_dropbox).click()
+        month = self.driver.find_element(*AmericanAirlinesPageLocators.month_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.month_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((month))))
         select.select_by_index(index)
 
     def click_day(self, index):
-        day = self.driver.find_element(*MainPageLocators.day_dropbox)
-        self.driver.find_element(*MainPageLocators.day_dropbox).click()
+        day = self.driver.find_element(*AmericanAirlinesPageLocators.day_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.day_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((day))))
         select.select_by_index(index)
 
     def click_year(self, index):
-        year = self.driver.find_element(*MainPageLocators.year_dropbox)
-        self.driver.find_element(*MainPageLocators.year_dropbox).click()
+        year = self.driver.find_element(*AmericanAirlinesPageLocators.year_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.year_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((year))))
         select.select_by_index(index)
 
     def click_gender(self, index):
-        gender = self.driver.find_element(*MainPageLocators.gender_dropbox)
-        self.driver.find_element(*MainPageLocators.gender_dropbox).click()
+        gender = self.driver.find_element(*AmericanAirlinesPageLocators.gender_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.gender_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((gender))))
         select.select_by_index(index)
 
     def click_country(self, index):
-        country = self.driver.find_element(*MainPageLocators.country_dropbox)
-        self.driver.find_element(*MainPageLocators.country_dropbox).click()
+        country = self.driver.find_element(*AmericanAirlinesPageLocators.country_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.country_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((country))))
         select.select_by_index(index)
 
     def click_state(self, index):
-        state = self.driver.find_element(*MainPageLocators.state_dropbox)
-        self.driver.find_element(*MainPageLocators.state_dropbox).click()
+        state = self.driver.find_element(*AmericanAirlinesPageLocators.state_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.state_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((state))))
         select.select_by_index(index)
 
     def enter_email(self, email):
-        self.driver.find_element(*MainPageLocators.primary_email).click()
-        self.driver.find_element(*MainPageLocators.primary_email).send_keys(email)
+        self.driver.find_element(*AmericanAirlinesPageLocators.primary_email).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.primary_email).send_keys(email)
 
     def enter_confirm_email(self, email):
-        self.driver.find_element(*MainPageLocators.confirm_primary_email).click()
-        self.driver.find_element(*MainPageLocators.confirm_primary_email).send_keys(email)
+        self.driver.find_element(*AmericanAirlinesPageLocators.confirm_primary_email).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.confirm_primary_email).send_keys(email)
     
     def click_primary_phone_dropdown(self, index):
-        phoneNumber = self.driver.find_element(*MainPageLocators.phoneNumber_dropbox)
-        self.driver.find_element(*MainPageLocators.phoneNumber_dropbox).click()
+        phoneNumber = self.driver.find_element(*AmericanAirlinesPageLocators.phoneNumber_dropbox)
+        self.driver.find_element(*AmericanAirlinesPageLocators.phoneNumber_dropbox).click()
         select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((phoneNumber))))
         select.select_by_index(index)
 
     def enter_primary_phone(self, phoneNumber):
-        self.driver.find_element(*MainPageLocators.phoneNumber_textbox).click()
-        self.driver.find_element(*MainPageLocators.phoneNumber_textbox).send_keys(phoneNumber)
+        self.driver.find_element(*AmericanAirlinesPageLocators.phoneNumber_textbox).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.phoneNumber_textbox).send_keys(phoneNumber)
 
     def click_continue_button(self):
-        self.driver.find_element(*MainPageLocators.continue_button).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.continue_button).click()
 
+    def click_skip_seats_button(self):
+        self.driver.find_element(*AmericanAirlinesPageLocators.skip_seats).click()
+
+    def click_credit_debit_card_radio_button(self):
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_debit_card_radio_button).click()
+
+    def fill_out_credit_card_info(self,firstname,lastname,cardNumber,expire,address,city,state,index,zip):
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_first_name).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_first_name).send_keys(firstname)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_last_name).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_last_name).send_keys(lastname)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_card_number).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_card_number).send_keys(cardNumber)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_expiration).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_expiration).send_keys(expire)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_billing_address).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_billing_address).send_keys(address)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_city).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_city).send_keys(city)
+
+        creditcard_dopdown = self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_state)
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_state).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_state).send_keys(state)
+        select = Select(WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((creditcard_dopdown))))
+        select.select_by_index(index)
+
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_zipcode).click()
+        self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_zipcode).send_keys(zip)
+
+    def click_terms_and_conditons(self):
+        self.driver.find_element(*AmericanAirlinesPageLocators.terms_and_conditons).click()
+
+    def click_pay_now_button(self):
+        self.driver.find_element(*AmericanAirlinesPageLocators.paynow_button).click()

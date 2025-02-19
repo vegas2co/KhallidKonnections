@@ -1,5 +1,6 @@
 from elements import BasePageElement
 from locators import MainPageLocators
+from locators import AmericanAirlinesPageLocators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -143,7 +144,7 @@ class NikeBot(BasePage):
 
 class AmericanAirlinesBot(BasePage):
     def is_book_trip_present(self):
-        bookingContainer = self.driver.find_element(*MainPageLocators.booking_modal)
+        bookingContainer = self.driver.find_element(*AmericanAirlinesPageLocators.booking_modal)
         try:
             assert bookingContainer.is_displayed()
             print('Asserted is_book_trip_present')
@@ -152,8 +153,8 @@ class AmericanAirlinesBot(BasePage):
 
     def is_privacy_cookies_popup_present(self):
         self.driver.implicitly_wait(3)
-        privacy_cookies_popup = self.driver.find_element(*MainPageLocators.Privacy_cookies_popup_modal)
-        privacy_cookies_popup_dismiss = self.driver.find_element(*MainPageLocators.Privacy_cookies_popup_dismiss)
+        privacy_cookies_popup = self.driver.find_element(*AmericanAirlinesPageLocators.Privacy_cookies_popup_modal)
+        privacy_cookies_popup_dismiss = self.driver.find_element(*AmericanAirlinesPageLocators.Privacy_cookies_popup_dismiss)
         print("Found Pop up modal")
         try:
             assert privacy_cookies_popup.is_displayed()
@@ -170,11 +171,11 @@ class AmericanAirlinesBot(BasePage):
         )
 
     def is_departing_header_matching(self, header_text):
-        header = self.driver.find_element(*MainPageLocators.departing_flights_header).text
+        header = self.driver.find_element(*AmericanAirlinesPageLocators.departing_flights_header).text
         assert header == header_text, f"Expected header to be '{header_text}', but got '{header}'"
 
     def is_returning_header_matching(self, header_text):
-        header = self.driver.find_element(*MainPageLocators.returning_flights_header).text
+        header = self.driver.find_element(*AmericanAirlinesPageLocators.returning_flights_header).text
         assert header == header_text, f"Expected header to be '{header_text}', but got '{header}'"
 
     def is_upgrade_to_main_plus_modal_present(self):
@@ -186,3 +187,42 @@ class AmericanAirlinesBot(BasePage):
         WebDriverWait(self.driver, 5).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="continue-as-guest-btn"]')) #continue_as_guess_button
         )
+
+    def find_available_seat(self):
+        #Finds and selects an available non-middle seat on the American Airlines seat selection page.
+        try:
+            # Define seat types based on class names (update based on actual site)
+            available_seat_classes = ["is-available"]  # seat-available is an image source
+            
+            # Find all available seats
+            seats = self.driver.find_element(By.CLASS_NAME, "seat")
+            
+            for seat in seats:
+                seat_class = seat.get_attribute("class")
+                seat_number = seat.get_attribute("data-seat-number")  # Assuming seat numbers are stored in this attribute
+                row_number = int(seat_number[:-1]) if seat_number[:-1].isdigit() else None
+                # Ensure it's an available seat and not a middle seat (B and E are middle seats)
+                if any(cls in seat_class for cls in available_seat_classes) and not (seat_number.endswith("B") or seat_number.endswith("E")) and (row_number is None or row_number > 6):
+                    seat.click()
+                    print("Selected a non-middle seat, non-premium seat.")
+                    print(seat)
+                    return
+            print("No suitable seats available.")
+        except Exception as e:
+            print(f"Error selecting a seat: {e}")
+
+    def is_terms_and_conditions_present(self):
+        terms_and_conditions = self.driver.find_element(*AmericanAirlinesPageLocators.terms_and_conditons)
+        try:
+            assert terms_and_conditions.is_displayed()
+            print('Asserted terms_and_conditions')
+        except NoSuchElementException:
+            self.fail("terms_and_conditions is not present")
+
+    def is_pay_now_button_present(self):
+        pay_now_button = self.driver.find_element(*AmericanAirlinesPageLocators.paynow_button)
+        try:
+            assert pay_now_button.is_displayed()
+            print('Asserted pay_now_buttons')
+        except NoSuchElementException:
+            self.fail("pay_now_button is not present")
