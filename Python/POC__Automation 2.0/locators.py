@@ -82,6 +82,7 @@ class MainPageLocators(object):
     Nike_Search_Results = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[1]')
     Nike_Search_Name = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]/div/div[3]/header/div/h1/span[2]')
 
+class AmericanAirlinesPageLocators(object):
     #American Airlines
     From_input_box = (By.XPATH, '//*[@id="reservationFlightSearchForm.originAirport"]')
     To_input_box = (By.XPATH, '//*[@id="reservationFlightSearchForm.destinationAirport"]')
@@ -119,3 +120,20 @@ class MainPageLocators(object):
     phoneNumber_dropbox = (By.XPATH, '//*[@id="tripContact.phones0.type"]')
     phoneNumber_textbox = (By.XPATH, '//*[@id="phoneNumber"]')
     continue_button = (By.XPATH, '//*[@id="passenger_button"]')
+
+    #Seat selector
+    skip_seats = (By.XPATH, '//*[@id="continueWithoutSeatsLink"]')
+
+    #Review and Pay
+    credit_debit_card_radio_button = (By.XPATH, '//*[@id="newCardFormBtn"]')
+    credit_card_first_name = (By.XPATH, '//*[@id="adc-input-Dcog0W"]')
+    credit_card_last_name = (By.XPATH, '//*[@id="adc-input-2vUkqW"]')
+    credit_card_card_number = (By.XPATH, '//*[@id="adc-input-hi2Gcd"]')
+    credit_card_expiration = (By.XPATH, '//*[@id="adc-input-KKAI-r"]')
+    credit_card_country = (By.XPATH, '//*[@id="adc-select-LGvqj5"]')
+    credit_card_billing_address = (By.XPATH, '//*[@id="adc-input-EPKIhA"]')
+    credit_card_city = (By.XPATH, '//*[@id="adc-input-tXJoKc"]')
+    credit_card_state = (By.XPATH, '//*[@id="adc-select-d0_MkV"]')
+    credit_card_zipcode = (By.XPATH, '//*[@id="adc-input-WhTpcC"]')
+    terms_and_conditons = (By.XPATH, '//*[@id="adc-checkbox-xMKnhx"]')
+    paynow_button = (By.XPATH, '//*[@id="button"]')
