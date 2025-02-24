@@ -260,7 +260,7 @@ class Airlines(unittest.TestCase):
         base_page.navigateTo('https://www.aa.com/homePage.do')
         base_page.scroll(300)      
         assert_aa.is_book_trip_present()
-        action_aa.enter_flight_info('NYC', 'LAX', '03/05/2025', '03/10/2025')
+        action_aa.enter_flight_info('NYC', 'LAX', '03/12/2025', '03/17/2025')
         sleep(5)
         action_aa.submit_flight()
 

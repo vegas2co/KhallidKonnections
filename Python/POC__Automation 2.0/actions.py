@@ -305,6 +305,7 @@ class AmericanAirlinesBot(BasePage):
         self.driver.find_element(*AmericanAirlinesPageLocators.credit_debit_card_radio_button).click()
 
     def fill_out_credit_card_info(self,firstname,lastname,cardNumber,expire,address,city,state,index,zip):
+        print('Started card details')
         self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_first_name).click()
         self.driver.find_element(*AmericanAirlinesPageLocators.credit_card_first_name).send_keys(firstname)
 
