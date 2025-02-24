@@ -1,0 +1,137 @@
+{
+  "id": "0ee7849a-a653-4356-94da-ec7810b181b4",
+  "version": "2.0",
+  "name": "BestBuy",
+  "url": "https://www.bestbuy.com/",
+  "tests": [{
+    "id": "9ec14b1b-b222-4026-b943-f852a52fee2d",
+    "name": "Search 55' LG TV",
+    "commands": [{
+      "id": "933799bd-2714-417e-b4e9-3cd3e303648f",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.bestbuy.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4abe40d1-ca5d-4f56-b7ba-7b52840fa580",
+      "comment": "",
+      "command": "click",
+      "target": "id=gh-search-input",
+      "targets": [
+        ["id=gh-search-input", "id"],
+        ["name=st", "name"],
+        ["css=#gh-search-input", "css:finder"],
+        ["xpath=//input[@id='gh-search-input']", "xpath:attributes"],
+        ["xpath=//div[@id='shop-header-10193010']/div/div/header/div[3]/div/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae00c860-ac20-492b-a2f1-64203e7b8f3d",
+      "comment": "",
+      "command": "type",
+      "target": "id=gh-search-input",
+      "targets": [
+        ["id=gh-search-input", "id"],
+        ["name=st", "name"],
+        ["css=#gh-search-input", "css:finder"],
+        ["xpath=//input[@id='gh-search-input']", "xpath:attributes"],
+        ["xpath=//div[@id='shop-header-10193010']/div/div/header/div[3]/div/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "lg smart tv"
+    }, {
+      "id": "bbfbee7c-1cf3-455f-a944-a754a0a5d51b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.header-search-icon > .w-300",
+      "targets": [
+        ["css=.header-search-icon > .w-300", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f5b3796-af34-4244-87fa-fe4e6fc06b65",
+      "comment": "",
+      "command": "//assert",
+      "target": "css=.shop-sku-list-item:nth-child(2) .product-image",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01ad1b01-0d81-41f3-8f8d-77d0925998ae",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//img[@alt='LG - 65” Class UT70 Series LED 4K UHD Smart webOS TV (2024) - Front_Zoom']",
+      "targets": [
+        ["css=#shop-sku-list-item-18993368 .product-image", "css:finder"],
+        ["xpath=//img[@alt='LG - 65” Class UT70 Series LED 4K UHD Smart webOS TV (2024) - Front_Zoom']", "xpath:img"],
+        ["xpath=//div[@id='shop-sku-list-item-18993368']/div/div/div/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61bb7cc3-ce0a-4d92-891a-812bfbaf6f2c",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,13)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e5024cd-b848-4391-9c65-8b173b097a71",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.heading-4",
+      "targets": [
+        ["css=.heading-4", "css:finder"],
+        ["xpath=//div[@id='shop-product-title-1844105']/div/div/div[2]/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'LG - 65” Class UT70 Series LED 4K UHD Smart webOS TV (2024)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1d1e970-ec70-4b0e-b5e0-b3a7a0ccee55",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.shadow-none > .m-none",
+      "targets": [
+        ["css=.shadow-none > .m-none", "css:finder"],
+        ["xpath=//div[@id='shop-product-variations-60974288']/div/section/div/div[2]/div[2]/div[2]/div/div/ul/li[3]/button/p", "xpath:idRelative"],
+        ["xpath=//li[3]/button/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7142769d-7076-403d-a297-87c819159cdb",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.shadow-none > .m-none",
+      "targets": [
+        ["css=.shadow-none > .m-none", "css:finder"],
+        ["xpath=//div[@id='shop-product-variations-60974288']/div/section/div/div[2]/div[2]/div[2]/div/div/ul/li[3]/button/p", "xpath:idRelative"],
+        ["xpath=//li[3]/button/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe58cf12-43b7-4651-a633-91be547cd2cc",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.priceView-hero-price > span:nth-child(1)",
+      "targets": [
+        ["css=.priceView-hero-price > span:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='pricing-price-27505788']/div/div/div/div/div/div[2]/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'$599.99')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "4b559752-5a78-411a-8739-bee20768a27b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9ec14b1b-b222-4026-b943-f852a52fee2d"]
+  }],
+  "urls": ["https://www.bestbuy.com/"],
+  "plugins": []
+}
