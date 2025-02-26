@@ -72,15 +72,25 @@ class SauceDemoTest(unittest.TestCase):
         asserts.is_title_matches(row1[2])
         action.logout()
 
-    '''def test_login_2nd_user(self):
-            self.driver.maximize_window()
-            base = actions.BasePage(self.driver)
-            action = actions.SauceDemo(self.driver)
-            asserts = assestions.SauceDemo(self.driver)
-            row2 = self.test_data[1]
-            action.login(row2[0],row2[1])
-            action.clickLogin()
-            asserts.is_logged_in()'''
+    def test_login_problem_user(self):
+        self.driver.maximize_window()
+        base = actions.BasePage(self.driver)
+        action = actions.SauceDemo(self.driver)
+        asserts = assestions.SauceDemo(self.driver)
+        row2 = self.test_data[1]
+        action.login(row2[0],row2[1])
+        action.clickLogin()
+        asserts.is_logged_in()
+
+    def test_login_glitch_user(self):
+        self.driver.maximize_window()
+        base = actions.BasePage(self.driver)
+        action = actions.SauceDemo(self.driver)
+        asserts = assestions.SauceDemo(self.driver)
+        row3 = self.test_data[1]
+        action.login(row3[0],row3[1])
+        action.clickLogin()
+        asserts.is_logged_in()
 
     def tearDown(self):
         return super().tearDown()
